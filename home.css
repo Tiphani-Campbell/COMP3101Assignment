@@ -1,0 +1,35 @@
+
+/*General Styling*/
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+p{
+    font-family: "Segoe UI","Helvetica Neue","Arial",sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+}
+h1{
+    font-family: 'Abril Fatface', cursive;
+    
+}
+h6{
+    font-family: "Segoe UI","Helvetica Neue","Arial",sans-serif;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+/*Styling for the fisrt paragraph*/
+.lead{
+    font-family: "Segoe UI","Helvetica Neue","Arial",sans-serif;
+}
+
+li{
+    margin-left: 0.5rem;
+    list-style: none;
+    font-family: 'Segoe UI', Tahoma, 'Geneva', Verdana, sans-serif;
+    font-size: 0.9rem;
+    margin:0.5rem;
+    font-style:oblique;
+}
+
