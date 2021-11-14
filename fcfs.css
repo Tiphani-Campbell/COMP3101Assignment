@@ -1,0 +1,134 @@
+h3 {
+    position: absolute;
+    left: 789px;
+    top: 288px;
+    color: black;
+    font-size: larger;
+}
+
+.processer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    font-size: large;
+    color: black;
+    background-color: #B9FF2E;
+    height: 299px;
+    width: 350px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 5px;
+}
+
+.processer #name,
+.processer #space {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 190px;
+    height: 47px;
+}
+
+#restart {
+    position: absolute;
+    background-color: #3BF2FF;
+    color: black;
+    height: 89px;
+    width: 214px;
+    border-radius: 5px;
+    top: 782px;
+    left: 1499px;
+}
+
+#new {
+    position: absolute;
+    background-color: #0BA634;
+    color: white;
+    height: 89px;
+    width: 214px;
+    border-radius: 5px;
+    top: 782px;
+    left: 1274px;
+}
+
+#details {
+    position: absolute;
+    background-color: #440664;
+    color: white;
+    height: 89px;
+    width: 221px;
+    border-radius: 5px;
+    top: 661px;
+    left: 1383px;
+}
+
+#queue {
+    position: absolute;
+    background-color: white;
+    text-align: center;
+    width: 210px;
+    height: 523px;
+    top: 371px;
+    left: 251px;
+}
+
+#rejoinarrow {
+    position: absolute;
+    width: 133px;
+    height: 110px;
+    top: 762px;
+    left: 481px;
+}
+
+#legend {
+    position: absolute;
+    width: 295px;
+    height: 184px;
+    top: 421px;
+    left: 1346px;
+    background-color: white;
+    border-style: solid;
+    box-shadow: 2px 2px 2px;
+    border-radius: 5px;
+}
+
+#legend .legend-item {
+    display: flex;
+    align-items: center;
+}
+
+#ready,
+#running,
+#terminated {
+    position: absolute;
+    height: 30px;
+    width: 39px;
+    color: black;
+}
+
+#ready {
+    background-color: #0E6800;
+    border-color: #0E6800;
+    top: 462px;
+    left: 1392px;
+}
+
+#running {
+    background-color: #0031A3;
+    border-color: #0031A3;
+    top: 510px;
+    left: 1392px;
+}
+
+#terminated {
+    background-color: #FF0000;
+    border-color: #FF0000;
+    top: 558px;
+    left: 1392px;
+}
+
+#detailTable {
+    text-align: center;
+}
