@@ -146,3 +146,117 @@ h3{
 #detailTable{
     text-align: center;
 }
+
+@keyframes movetoProcessor{
+    10%{
+        left: 72%;
+        top:55%;
+    }
+    20%{
+        left: 72%;
+        top:55%; 
+    }
+    30%{
+        left: 72%;
+        top:55%;
+    }
+    40%{
+        left: 72%;
+        top:55%;
+    }
+    50%{
+        left: 72%;
+        top:55%;
+        background-color:#0031A3 ;
+    }
+    60%{
+        left: 72%;
+        top:55%;
+        background-color: #0031A3;
+    }
+    70%{
+        left: 72%;
+        top:55%;
+        background-color: #0031A3;
+    }
+    80%{
+        left: 72%;
+        top:55%;
+        background-color: #0031A3;
+    }
+    90%{
+        left: 72%;
+        top:55%;
+        background-color: #FF0000;
+        opacity: 1;
+    }
+    100%{
+        left: 72%;
+        top:55%;
+        background-color: #FF0000;
+        opacity: 0;
+    }
+}
+
+@keyframes moveToQueue{
+    10%{
+        left: 72%;
+        top:55%; 
+    }
+    20%{
+        left: 72%;
+        top:55%;
+    }
+    30%{
+        left: 72%;
+        top:55%;
+    }
+    40%{
+        left: 72%;
+        top:55%;
+    }
+    50%{
+        left: 72%;
+        top:55%;
+        background-color: #FF0000;
+    }
+    60%{
+        left: 72%;
+        top:55%;
+        background-color: #FF0000;
+    }
+    70%{
+        left: 72%;
+        top:55%;
+        background-color: #FF0000;
+    }
+    80%{
+        left: 72%;
+        top:55%;
+        background-color: #FF0000;
+    }
+    90%{
+        left: 72%;
+        top:55%;
+        background-color: #0E6800;
+        opacity: 1;
+    }
+    95%{
+        left: 72%;
+        top:55%;
+        background-color: #0E6800;
+        opacity: 1;
+    }
+    100%{
+        left: 72%;
+        top:55%;
+        background-color: #0E6800;
+        opacity: 0;
+    }
+}
+
+@keyframes arrive{
+    100%{
+        opacity: 1;
+    }
+}
