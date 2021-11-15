@@ -5,23 +5,28 @@ h3{
     color: black;
     font-size: larger;
 }
-.processer{
+.processor{
+    position: absolute;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     z-index: 1;
     font-size: large;
+    font-weight: bold;
     color: black;
     background-color: #B9FF2E;
     height: 299px;
     width: 350px;
-    border-radius: 5px;
+    border-radius: 20px;
     border-style: solid;
     border-width: 5px;
+    box-shadow: 2px 2px 2px;
+    top: 458px;
+    left: 785px;
 }
 
-.processer #name, .processer #space{
+.processor #name, .processor #space{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,6 +43,7 @@ h3{
     border-radius: 5px;
     top: 782px;
     left: 1499px;
+    font-weight: bold;
 }
 
 #new{
@@ -49,6 +55,7 @@ h3{
     border-radius: 5px;
     top: 782px;
     left: 1274px;
+    font-weight: bold;
 }
 
 #details{
@@ -60,11 +67,17 @@ h3{
     border-radius: 5px;
     top: 661px;
     left: 1383px;
+    font-weight: bold;
 }
 
 #queue{
     position: absolute;
+    font-weight: bold;
     background-color: white;
+    border: gray;
+    border-style: solid;
+    box-shadow: gray 2px 2px 2px;
+    border-radius: 80px;
     text-align: center;
     width: 210px;
     height: 523px;
@@ -81,6 +94,7 @@ h3{
 }
 
 #legend{
+    text-align: center;
     position: absolute;
     width: 295px;
     height: 184px;
@@ -90,39 +104,43 @@ h3{
     border-style: solid;
     box-shadow: 2px 2px 2px;
     border-radius: 5px;
+    font-weight: bold;
 }
 
 #legend .legend-item{
     display: flex;
-    align-items: center;
+    align-items: center;   
 }
 
 #ready, #running, #terminated{
-    position: absolute;
     height: 30px;
-    width: 39px;
-    color: black;
+    width: 39px;  
+    margin-top: 3%; 
+    margin-right: 2%;
+    margin-left: 22%;
+    margin-bottom: 2%;
 }
 
 #ready{
+    
     background-color: #0E6800;
     border-color: #0E6800;
-    top: 462px;
-    left: 1392px;
+    
+    
 }
 
 #running{
+    
     background-color: #0031A3;
     border-color: #0031A3;
-    top: 510px;
-    left: 1392px;
+   
 }
 
 #terminated{
+    
     background-color: #FF0000;
     border-color: #FF0000;
-    top: 558px;
-    left: 1392px;
+    
 }
 
 #detailTable{
