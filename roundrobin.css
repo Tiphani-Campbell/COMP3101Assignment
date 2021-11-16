@@ -5,7 +5,17 @@ h3{
     color: black;
     font-size: larger;
 }
-.processor{
+
+.process-roundrobin{
+    border: 2px black solid;
+    border-radius: 100%;
+    height: 65px;
+    width: 65px;
+    left: 10%;
+    background-color: #0E6800;
+    z-index: 2;
+}
+.processor-roundrobin{
     position: absolute;
     display: flex;
     flex-wrap: wrap;
@@ -26,12 +36,14 @@ h3{
     left: 785px;
 }
 
-.processor #name, .processor #space{
+.processor-roundrobin #name, .processor #space{
     display: flex;
+    position: absolute;
     justify-content: center;
     align-items: center;
     width: 190px;
     height: 47px;
+    top: 21px;
 }
 
 #restart{
@@ -40,10 +52,13 @@ h3{
     color: black;
     height: 89px;
     width: 214px;
-    border-radius: 5px;
+    border-radius: 50px;
+    border-style: solid;
+    border-color: #3BF2FF;
     top: 782px;
     left: 1499px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 #new{
@@ -52,10 +67,13 @@ h3{
     color: white;
     height: 89px;
     width: 214px;
-    border-radius: 5px;
+    border-radius: 50px;
+    border-style: solid;
+    border-color: #0BA634;
     top: 782px;
     left: 1274px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 #details{
@@ -64,10 +82,13 @@ h3{
     color: white;
     height: 89px;
     width: 221px;
-    border-radius: 5px;
+    border-radius: 50px;
+    border-style: solid;
+    border-color: #440664;
     top: 661px;
     left: 1383px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 #queue{
