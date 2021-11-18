@@ -1,18 +1,47 @@
-<div class="container">
-    <h3>FIRST COME FIRST SERVE</h3>
-    <div id="animation">
-        <div class="processor">
-            <div id="name">PROCESSOR</div>
-            <div id="space"></div>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/fcfs.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="../css/animate.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h3>FIRST COME FIRST SERVE</h3>
+        <div id="animation">
+            <div class="processor" id="fcfs">
+                <div id="name">PROCESSOR</div>
+                <div id="space"></div>
+            </div>
+            <div id="queue">QUEUE</div>
+            <div id="legend">
+                <div class="legend-item">
+                    <div id="ready"></div>
+                    Ready
+                </div>
+                <div class="legend-item">
+                    <div id="running"></div>
+                    Running
+                </div>
+                <div class="legend-item">
+                    <div id="terminated"></div>
+                    Terminated
+                </div>
+            </div>
+            <button id="restart" type="button">Restart</button>
+            <button id="new" type="button">New</button>
+            <button id="details" type="button">Details</button>
         </div>
-        <div id="queue">QUEUE</div>
-        <div id="legend">
-            <div class="legend-item" id="ready">Ready</div>
-            <div class="legend-item" id="running">Running</div>
-            <div class="legend-item" id="terminated">Terminated</div>
-        </div>
-        <button id="restart" type="button">Restart</button>
-        <button id="new" type="button">New</button>
-        <button id="details" type="button">Details</button>
     </div>
-</div>
+</body>
+
+</html>

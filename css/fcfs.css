@@ -1,12 +1,18 @@
 h3 {
     position: absolute;
-    left: 789px;
-    top: 288px;
+    left: 500px;
+    top: 8%;
     color: black;
     font-size: larger;
 }
 
-.processer {
+#fcfs {
+    top: 28%;
+    left: 63%;
+    position: absolute;
+}
+
+.processor {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -15,15 +21,15 @@ h3 {
     font-size: large;
     color: black;
     background-color: #B9FF2E;
-    height: 299px;
-    width: 350px;
+    height: 200px;
+    width: 200px;
     border-radius: 5px;
     border-style: solid;
     border-width: 5px;
 }
 
-.processer #name,
-.processer #space {
+.processor #name,
+.processor #space {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,51 +41,51 @@ h3 {
     position: absolute;
     background-color: #3BF2FF;
     color: black;
-    height: 89px;
-    width: 214px;
+    height: 45px;
+    width: 10%;
     border-radius: 5px;
-    top: 782px;
-    left: 1499px;
+    top: 87%;
+    left: 38%;
 }
 
 #new {
     position: absolute;
     background-color: #0BA634;
     color: white;
-    height: 89px;
-    width: 214px;
+    height: 45px;
+    width: 10%;
     border-radius: 5px;
-    top: 782px;
-    left: 1274px;
+    top: 87%;
+    left: 50%;
 }
 
 #details {
     position: absolute;
     background-color: #440664;
     color: white;
-    height: 89px;
-    width: 221px;
+    height: 45px;
+    width: 10%;
     border-radius: 5px;
-    top: 661px;
-    left: 1383px;
+    top: 87%;
+    left: 85%;
 }
 
 #queue {
     position: absolute;
-    background-color: white;
+    background-color: rgba(176, 235, 15, 0.767);
     text-align: center;
     width: 210px;
-    height: 523px;
-    top: 371px;
-    left: 251px;
+    height: 90%;
+    top: 3.5%;
+    left: 8.5%;
 }
 
 #legend {
     position: absolute;
-    width: 295px;
-    height: 184px;
-    top: 421px;
-    left: 1346px;
+    width: 127px;
+    height: 20%;
+    top: 2%;
+    left: 85%;
     background-color: white;
     border-style: solid;
     box-shadow: 2px 2px 2px;
@@ -94,33 +100,37 @@ h3 {
 #ready,
 #running,
 #terminated {
-    position: absolute;
-    height: 30px;
-    width: 39px;
+    height: 15px;
+    width: 15px;
     color: black;
+    margin: 4%;
 }
 
 #ready {
     background-color: #0E6800;
     border-color: #0E6800;
-    top: 462px;
-    left: 1392px;
 }
 
 #running {
     background-color: #0031A3;
     border-color: #0031A3;
-    top: 510px;
-    left: 1392px;
 }
 
 #terminated {
     background-color: #FF0000;
     border-color: #FF0000;
-    top: 558px;
-    left: 1392px;
 }
 
 #detailTable {
     text-align: center;
+}
+
+#animation {
+    margin: 8% 10% 0%;
+    width: 75%;
+    background-color: white;
+    border: 8px black solid;
+    height: 400px;
+    border-radius: 3%;
+    position: relative;
 }
