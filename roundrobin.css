@@ -1,15 +1,23 @@
-#rr-container{
+body{
     background-color: rgba(197, 196, 196, 0.8);
+    filter: drop-shadow(0px 12px 16px rgb(220, 220, 220));
 }
-#rr-container > h3{
+h3{
     position: absolute;
     left: 789px;
     top: 288px;
     color: black;
     font-size: larger;
 }
+hr{
+    position: relative;
+    top: 335px;
+    width: 150%;
+    height: 0.1px;
+    background-color: gray;
+}
 
-#rr-container > .process-roundrobin{
+.process-roundrobin{
     border: 2px black solid;
     border-radius: 100%;
     height: 65px;
@@ -18,7 +26,7 @@
     background-color: #0E6800;
     z-index: 2;
 }
-#rr-conatiner > .processor-roundrobin{
+.processor-roundrobin{
     position: absolute;
     display: flex;
     flex-wrap: wrap;
@@ -39,7 +47,7 @@
     left: 785px;
 }
 
-#rr-container > .processor-roundrobin #name, #rr-conatiner >.processor #space{
+.processor-roundrobin #name, .processor #space{
     display: flex;
     position: absolute;
     justify-content: center;
@@ -49,7 +57,7 @@
     top: 21px;
 }
 
-#rr-container > #restart{
+#restart{
     position: absolute;
     background-color: #3BF2FF;
     color: black;
@@ -64,7 +72,7 @@
     cursor: pointer;
 }
 
-#rr-container > #new{
+#new{
     position: absolute;
     background-color: #0BA634;
     color: white;
@@ -79,7 +87,7 @@
     cursor: pointer;
 }
 
-#rr-container > #details{
+#details{
     position: absolute;
     background-color: #440664;
     color: white;
@@ -92,25 +100,25 @@
     left: 1383px;
     font-weight: bold;
     cursor: pointer;
+    box-shadow: gray 2px 2px 2px;
 }
 
-#rr-container > #queue{
+#queue{
     position: absolute;
     font-weight: bold;
     background-color: white;
-    border: gray;
-    border-style: solid;
     box-shadow: #888888 3px 5px 5px;
     border-radius: 80px;
     text-align: center;
     width: 210px;
     height: 523px;
     filter: drop-shadow(0px 12px 16px rgb(220, 220, 220));
+    padding-top: 50px;
     top: 371px;
     left: 251px;
 }
 
-#rr-container > #rejoinarrow{
+#rejoinarrow{
     position: absolute;
     width: 133px;
     height: 110px;
@@ -118,26 +126,26 @@
     left: 481px;
 }
 
-#rr-container > #legend{
+#legend{
     text-align: center;
     position: absolute;
-    width: 295px;
-    height: 184px;
+    width: 270px;
+    height: 160px;
     top: 421px;
     left: 1346px;
     background-color: white;
-    border-style: solid;
+    border: solid #440664 0.1rem;
     box-shadow: 2px 2px 2px;
-    border-radius: 5px;
+    border-radius: 45px;
     font-weight: bold;
 }
 
-#rr-container > #legend .legend-item{
+#legend .legend-item{
     display: flex;
     align-items: center;   
 }
 
-#rr-container > #ready, #rr-container > #running, #rr-container > #terminated{
+#ready, #running, #terminated{
     height: 30px;
     width: 39px;  
     margin-top: 3%; 
@@ -146,7 +154,7 @@
     margin-bottom: 2%;
 }
 
-#rr-container > #ready{
+#ready{
     
     background-color: #0E6800;
     border-color: #0E6800;
@@ -154,21 +162,21 @@
     
 }
 
-#rr-container > #running{
+#running{
     
     background-color: #0031A3;
     border-color: #0031A3;
    
 }
 
-#rr-container > #terminated{
+#terminated{
     
     background-color: #FF0000;
     border-color: #FF0000;
     
 }
 
-#rr-container > #detailTable{
+#detailTable{
     text-align: center;
 }
 
