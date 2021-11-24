@@ -1,4 +1,7 @@
-h3{
+#rr-container{
+    background-color: rgba(197, 196, 196, 0.8);
+}
+#rr-container > h3{
     position: absolute;
     left: 789px;
     top: 288px;
@@ -6,7 +9,7 @@ h3{
     font-size: larger;
 }
 
-.process-roundrobin{
+#rr-container > .process-roundrobin{
     border: 2px black solid;
     border-radius: 100%;
     height: 65px;
@@ -15,7 +18,7 @@ h3{
     background-color: #0E6800;
     z-index: 2;
 }
-.processor-roundrobin{
+#rr-conatiner > .processor-roundrobin{
     position: absolute;
     display: flex;
     flex-wrap: wrap;
@@ -36,7 +39,7 @@ h3{
     left: 785px;
 }
 
-.processor-roundrobin #name, .processor #space{
+#rr-container > .processor-roundrobin #name, #rr-conatiner >.processor #space{
     display: flex;
     position: absolute;
     justify-content: center;
@@ -46,7 +49,7 @@ h3{
     top: 21px;
 }
 
-#restart{
+#rr-container > #restart{
     position: absolute;
     background-color: #3BF2FF;
     color: black;
@@ -61,7 +64,7 @@ h3{
     cursor: pointer;
 }
 
-#new{
+#rr-container > #new{
     position: absolute;
     background-color: #0BA634;
     color: white;
@@ -76,7 +79,7 @@ h3{
     cursor: pointer;
 }
 
-#details{
+#rr-container > #details{
     position: absolute;
     background-color: #440664;
     color: white;
@@ -91,22 +94,23 @@ h3{
     cursor: pointer;
 }
 
-#queue{
+#rr-container > #queue{
     position: absolute;
     font-weight: bold;
     background-color: white;
     border: gray;
     border-style: solid;
-    box-shadow: gray 2px 2px 2px;
+    box-shadow: #888888 3px 5px 5px;
     border-radius: 80px;
     text-align: center;
     width: 210px;
     height: 523px;
+    filter: drop-shadow(0px 12px 16px rgb(220, 220, 220));
     top: 371px;
     left: 251px;
 }
 
-#rejoinarrow{
+#rr-container > #rejoinarrow{
     position: absolute;
     width: 133px;
     height: 110px;
@@ -114,7 +118,7 @@ h3{
     left: 481px;
 }
 
-#legend{
+#rr-container > #legend{
     text-align: center;
     position: absolute;
     width: 295px;
@@ -128,12 +132,12 @@ h3{
     font-weight: bold;
 }
 
-#legend .legend-item{
+#rr-container > #legend .legend-item{
     display: flex;
     align-items: center;   
 }
 
-#ready, #running, #terminated{
+#rr-container > #ready, #rr-container > #running, #rr-container > #terminated{
     height: 30px;
     width: 39px;  
     margin-top: 3%; 
@@ -142,7 +146,7 @@ h3{
     margin-bottom: 2%;
 }
 
-#ready{
+#rr-container > #ready{
     
     background-color: #0E6800;
     border-color: #0E6800;
@@ -150,21 +154,21 @@ h3{
     
 }
 
-#running{
+#rr-container > #running{
     
     background-color: #0031A3;
     border-color: #0031A3;
    
 }
 
-#terminated{
+#rr-container > #terminated{
     
     background-color: #FF0000;
     border-color: #FF0000;
     
 }
 
-#detailTable{
+#rr-container > #detailTable{
     text-align: center;
 }
 
