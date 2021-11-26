@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Scheduling Algorithms</title>
+     <!-- Bootstrap Stylesheet etc-->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     
+     <!--Font-->
+     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Abril+Fatface" />
+     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=EB+Garamond" />
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Praise&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet for the index page, nav bar, etc-->
+    <link rel="stylesheet" href="background/style.css">
+    <!-- Stylesheet for external containers-->
+    <link rel="stylesheet" href="style/home.css">
+    <!--
+    <link rel="stylesheet" href="style/priority.css">
+    <link rel="stylesheet" href="style/roundrobin.css">
+    <link rel="stylesheet" href="style/shortest-job-first.css">
+    <link rel="stylesheet" href="style/fcfs.css">
+    -->
+
+   
+</head>
+
+
+<body>
+<!--*********************************************Initial Modal Pop up********************************************-->
+<!--Modals Pop Up-->
+<!-- Shortest Remaining Time Modal -->
+    <div class="modal fade" id="srtmodal" tabindex="-1" role="dialog" aria-labelledby="srtLabel" aria-hidden="false">
+    <!--Creation of Modal content-->
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+            <!--Modal Header with title and close button-->
+                <div class="modal-header text-center">
+                    <h3 class="modal-title w-100">Shortest Remaining Time<h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+            <!--Modal Content-->
+                <div class="modal-body">
+                    <form id="srtForm">
+                    <div class="form-group">
+                        <label for="pAmount">Process Amount</label>
+                        <input class="form-control" id="srtPAmount" aria-describedby="pAmountHelp" placeholder="Enter the process amount">
+                    </div>
+                    </form>
+                </div>
+            <!--Submit Button-->
+                <div id="srtFooter" class="modal-footer">
+                    <button id= "srtSubmitBtn" type="button" class="btn btn-primary">SUBMIT</button>
+                </div>
+
+            </div>
+        </div>
+    
+    </div>
+
+    <!-- Round Robin Modal -->
+    <div class="modal fade" id="rrmodal" tabindex="-1" role="dialog" aria-labelledby="rrLabel" aria-hidden="false">
+    <!--Creation of Modal content-->
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+            <!--Modal Header with title and close button-->
+                <div class="modal-header text-center">
+                    <h3 class="modal-title w-100">Round Robin<h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+            <!--Modal Content-->
+                <div class="modal-body">
+                <!--Modal Forms-->
+                    <form id="rraForm">
+                    <div class="form-group">
+                        <label for="pAmount">Process Amount</label>
+                        <input class="form-control" id="rrPAmount" aria-describedby="pAmountHelp" placeholder="Enter the process amount">
+                    </div>
+                    </form>
+
+                    <form id="rrqForm">
+                    <div class="form-group">
+                        <label for="Quantum">Quantum</label>
+                        <input class="form-control" id="rrQuantum" aria-describedby="pQuantumHelp" placeholder="Enter Quantum">
+                    </div>
+                    </form>
+
+                <!--Submit Button-->
+                    <div id="rrFooter" class="modal-footer">
+                        <button id= "rrSubmitBtn" type="button" class="btn btn-primary">SUBMIT</button>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    
+    </div>
+
+    <!-- First Come First Serve Modal -->
+    <div class="modal fade" id="fcfsmodal" tabindex="-1" role="dialog" aria-labelledby="fcfsLabel" aria-hidden="false">
+    <!--Creation of Modal content-->
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+            <!--Modal Header with title and close button-->
+                <div class="modal-header text-center">
+                    <h3 class="modal-title w-100">First Come First Served<h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+            <!--Modal Content-->
+                <div class="modal-body">
+                    <form id="fcfsForm">
+                    <div class="form-group">
+                        <label for="pAmount">Process Amount</label>
+                        <input class="form-control" id="fcfsPAmount" aria-describedby="pAmountHelp" placeholder="Enter the process amount">
+                    </div>
+                    </form>
+                </div>
+            <!--Submit Button-->
+                <div id="fcfsFooter" class="modal-footer">
+                    <button id= "fcfsSubmitBtn" type="button" class="btn btn-primary">SUBMIT</button>
+                </div>
+
+            </div>
+        </div>
+    
+    </div>
+
+    <!-- Shortest Job First Modal -->
+    <div class="modal fade" id="sjfmodal" tabindex="-1" role="dialog" aria-labelledby="sjfLabel" aria-hidden="false">
+    <!--Creation of Modal content-->
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+            <!--Modal Header with title and close button-->
+                <div class="modal-header text-center">
+                    <h3 class="modal-title w-100">Shortest Job First<h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+            <!--Modal Content-->
+            
+                <div class="modal-body">
+                    <form id="sfjForm">
+                    <div class="form-group">
+                        <label for="pAmount">Process Amount</label>
+                        <input class="form-control" id="sjfPAmount" aria-describedby="pAmountHelp" placeholder="Enter the process amount">
+                    </div>
+                    </form>
+                </div>
+            <!--Submit Button-->
+                <div id="sjfFooter" class="modal-footer">
+                    <button id= "sjfSubmitBtn" type="button" class="btn btn-primary">SUBMIT</button>
+                </div>
+
+            </div>
+        </div>
+    
+    </div>
+
+    <!-- Details Modal -->
+    <div class="modal fade" id="detailsmodal" tabindex="-1" role="dialog" aria-labelledby="detailsLabel" aria-hidden="false">
+    <!--Creation of Modal content-->
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+            <!--Modal Header with title and close button-->
+                <div class="modal-header text-center">
+                    <h3 class="modal-title w-100">Details<h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+            <!--Modal Content-->
+                
+            <!--Submit Button-->
+                <div id="detailsFooter" class="modal-footer">
+                    <button id= "srtSubmitBtn" type="button" class="btn btn-secondary">Close</button>
+                </div>
+
+            </div>
+        </div>
+    
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--*********************************************This is the body of the webpage*********************************************-->
+    <!--This section contains the nav bar-->
+    
+        <header>
+    
+            <nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong justify-content-end" id="navigation">
+                <div class="container-fluid">
+                <!-- Name of the website-->
+                    <a class="navbar-brand" href="#" id="webname">UniAlgorithms</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                <!-- Navigation content-->
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+
+
+                            <!--Preemptive Dropdown Item-->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Preemptive
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="drop">
+                                <a class="dropdown-item" href="#" id="rtime" data-toggle="modal" data-target="#srtmodal">Shortest Remaining Time</a>
+                                <a class="dropdown-item" href="#" id="roundr" data-toggle="modal" data-target="#rrmodal">Round Robin</a>
+                                </div>
+                            </li>
+
+
+                            <!--Preemptive Dropdown Item-->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Non-preemptive
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="drop">
+                                <a class="dropdown-item" href="#" id="fcome" data-toggle="modal" data-target="#fcfsmodal">First Come First Served</a>
+                                <a class="dropdown-item" href="#" id="jobfirst" data-toggle="modal" data-target="#sjfmodal">Shortest Job First</a>
+                                </div>
+                            </li>
+
+                            <!--Design Shared folder-->
+                            <!--Google Drive Document with Design Elements and Design Link-->
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://drive.google.com/drive/folders/10WUUliynLSsVGHBfa7LqDs2rIUJFCCQF?usp=sharing" target="_blank">Design Document</a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+            
+                </div>
+            </nav>
+
+        
+        </header>
+        
+        <div id="particles-js">
+        </div>
+        <main>
+       
+        </main>
+
+
+
+    <!--Page Footer-->
+    <footer class="text-center text-white" >
+        <!-- Grid container -->
+        <div class="thanks">
+        <!-- Section: CTA -->
+        <h3 id= "thank">Thanks for Visiting</h3>
+        <!-- Section: CTA -->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2021 Copyright:
+        <a class="text-white" href="https://mdbootstrap.com/">UniAlgorithm Group</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!--Page Footer-->
+
+
+
+<!--******************************************** SCRIPTS ******************************************** -->
+<!-- Background particles script -->
+
+<script type="text/javascript" src="background/particles.js"> </script>
+<script type="text/javascript" src="background/app.js"> </script>
+
+<!--Bootstrap script-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<!--Page Script-->
+<script src="scripts/index.js"></script>
+ <!-- SCRIPTS -->
+
+<!-- The End-->
+</body>
+
