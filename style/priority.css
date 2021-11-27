@@ -1,0 +1,188 @@
+
+#rtimeContainer{
+    font-family: 'Segoe UI', Tahoma, 'Geneva', Verdana, sans-serif;
+    text-align: center;
+    background-color: rgba(224, 224, 224, 0.884);
+    width: 70rem;
+    height: 29rem;
+}
+
+#rtimeContainer h3{
+    font-family: 'Abril Fatface', cursive;font-size: 1.8rem;
+    border-bottom:2px solid #707070;
+    margin-bottom: 0;
+}
+#queue{
+    background-color: rgb(255, 255, 255);
+    width: 7.5rem;
+    height:22rem;
+    border-radius: 50px;
+    font-family: 'Abril Fatface', cursive;
+    padding:5px;
+    padding-top:10px;
+    font-size: 1.7rem;
+    filter: drop-shadow(0px 12px 16px rgb(220, 220, 220));
+    box-shadow: 3px 5px 5px #888888;
+}
+#legend{
+    background-color:white;
+    width:13rem;
+    height: 8rem;
+    border-radius: 20px;
+}
+/*Key Styling*/
+#legend{
+    border: 2px solid #1B0C63;
+    font-family: 'Abril Fatface', cursive;
+    font-size: 1.2rem;
+    padding-top: 10px;
+    filter: drop-shadow(0px 0px 10px #1a0c63c4);
+    padding-bottom: 5px;
+}
+
+.legend-item{
+    font-family: 'Segoe UI', Tahoma, 'Geneva', Verdana, sans-serif;
+    font-size: 1.0rem;
+    margin-bottom: 8px;
+    text-align: left;
+    padding-left: 15px;
+}
+#readyc{
+    height: 1.2rem;
+    width: 1.6rem;
+    background-color: #0E6800;
+    float:left;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+#runningc{
+    height: 1.2rem;
+    width: 1.6rem;
+    background-color: #0031A3;
+    float:left;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+#terminatedc{
+    height: 1.2rem;
+    width: 1.6rem;
+    background-color: #FF0000;
+    float:left;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/*buttons*/
+#details{
+    border-radius: 20px;
+    background-color:#440664;
+    font-family: 'Abril Fatface', cursive;
+    color: white;
+    width:7.5rem;
+    height: 3rem;
+    font-size: large;
+    font-weight: 700;
+    border: 0rem;
+    box-shadow: 3px 3px 3px #161616;
+  }
+
+  #new{
+    border-radius: 20px;
+    background-color:#0BA634;
+    font-family: 'Abril Fatface', cursive;
+    color: white;
+    width: 6.8rem;
+    height: 2.7rem;
+    font-size: large;
+    font-weight: 700;
+    border: 0rem;
+    box-shadow: 3px 3px 3px #161616;
+  }
+
+  #restart{
+    border-radius: 20px;
+    background-color:#3BF2FF;
+    font-family: 'Abril Fatface', cursive;
+    width:6.8rem;
+    height: 2.7rem;
+    font-size: large;
+    font-weight: 700;
+    border: 0rem;
+    box-shadow: 3px 3px 3px #161616;
+  }
+  
+  #mainProcessor{
+    width: 15.5rem;
+    height: 13rem;
+    background-color:#B9FF2E;
+    border: 0.2rem solid black;
+    border-radius: 15px;
+  }
+
+#mainProcessor #name{
+    font-family: 'Abril Fatface', cursive;
+    font-size: 1.6rem;
+    padding-top: 4px;
+  }
+
+#mainProcessor{
+    filter: drop-shadow(0px 12px 12px rgb(161, 201, 161));
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.432);
+}
+
+#mainProcessor #space{
+    margin:1rem;
+    width: 13rem;
+    height: 8rem;
+}
+#rejoinarrow{
+    width: 4.5rem;
+}
+/* Positioning */
+
+#rtimeContainer #animation #mainProcessor{
+    position: absolute;
+    left:38.5%;
+    top:18%;
+}
+
+#rtimeContainer #animation #rejoinarrow{
+    position: absolute;
+    top:70%;
+    left:15%;
+}
+
+#rtimeContainer #animation #legend{
+    position: absolute;
+    top:10%;
+    left:73%;
+}
+
+#rtimeContainer #animation #details{
+    position: absolute;
+    top:48%;
+    left:77%;
+}
+#rtimeContainer #animation #new{
+    position: absolute;
+    top:65%;
+    left:72%;
+}
+#rtimeContainer #animation #restart{
+    position: absolute;
+    top:65%;
+    left:83%;
+}
+
+
+#rtimeContainer #animation #queue{
+    position: absolute;
+    top:7%;
+    left: 2%;
+}
+
+#rtimeContainer #animation{
+    position: relative;
+    height: 27rem;
+    margin:0px;
+}
