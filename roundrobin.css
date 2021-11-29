@@ -3,7 +3,7 @@
     text-align: center;
     background-color: rgba(224, 224, 224, 0.884);
     width: 70rem;
-    height: 29rem;
+    height: 32rem;
     margin: auto;
 }
 #rr-h3{
@@ -14,7 +14,7 @@
 #rr-queue{
     background-color: rgb(255, 255, 255);
     width: 7.5rem;
-    height:22rem;
+    height:26rem;
     border-radius: 50px;
     font-family: 'Abril Fatface', cursive;
     padding:5px;
@@ -103,6 +103,47 @@
     border: 0rem;
     box-shadow: 3px 3px 3px #161616;
 }
+#rr-details:hover{
+    background-color: #ad0aff;
+    border: 0rem;
+    box-shadow: 3px 3px 3px #161616;
+}
+#rr-details:active{
+    background-color: #ad0aff;
+    outline: none;
+    border: 0% !important;
+    box-shadow: 3px 3px 3px #e9b1ff; 
+}
+#rr-details:focus{
+    background-color: #ad0aff;
+    outline: none;
+}
+#rr-new:hover{
+    background-color: #10ff50;
+}
+#rr-new:active{
+    background-color: #10ff50;
+    outline: none;
+    border: 0% !important;
+    box-shadow: 3px 3px 3px #92ffaf;
+}
+#rr-new:focus{
+    background-color: #10ff50;
+    outline: none;
+}
+#rr-restart:hover{
+    background-color: #7ef6ff;
+    
+}
+#rr-restart:active{
+    outline:none;
+    border: 0% !important;
+    box-shadow: 3px 3px 3px #d9fafd;
+}
+#rr-restart:focus{
+    background-color: #7ef6ff;
+    outline: none;
+}
 .rr-processor{
     width: 15.5rem;
     height: 13rem;
@@ -160,7 +201,6 @@
     left:83%;
 }
 
-
 #rr-container #rr-animation #rr-queue{
     position: absolute;
     top:7%;
@@ -177,62 +217,66 @@
 }
 .process-roundrobin{
     position: relative;
-    border: 2px black solid;
+    border: 0;
+    color: white;
     border-radius: 100%;
-    height: 65px;
-    width: 65px;
-    left: 50px;
+    height: 60px;
+    width: 60px;
+    left: 4.5%;
     background-color: #0E6800;
+    font-weight: 200;
+    font-size: small;
+    box-shadow: 3px 3px 3px #161616;
     text-align: center;
     z-index: 2;
 }
 
 @keyframes rr-movetoProcessor{
     10%{
-        left: 46%;
-        top: 25%;
+        left: 47%;
+        top: 37%;
     }
     20%{
-        left: 46%;
-        top: 25%; 
+        left: 47%;
+        top: 37%; 
     }
     30%{
-        left: 46%;
-        top: 25%;
+        left: 47%;
+        top: 37%;
     }
     40%{
-        left: 46%;
-        top: 25%;
+        left: 47%;
+        top: 37%;
     }
     50%{
-        left: 46%;
-        top: 25%;
+        left: 47%;
+        top: 37%;
         background-color:#0031A3 ;
     }
     60%{
-        left: 46%;
-        top: 25%;
+        left: 47%;
+        top: 37%;
         background-color: #0031A3;
     }
     70%{
-        left: 46%;
-        top: 25%;
+        left: 47%;
+        top: 37%;
         background-color: #0031A3;
     }
     80%{
-        left: 46%;
-        top: 25%;
+        left: 47%;
+        top: 37%;
         background-color: #0031A3;
     }
     90%{
-        left: 46%;
-        top: 25%;
+        left: 47%;
+        top: 37%;
         background-color: #FF0000;
         opacity: 1;
     }
     100%{
-        left: 46%;
-        top: 25%;
+        left: 95%;
+        top: 80%;
         background-color: #FF0000;
         opacity: 0;
     }
@@ -240,56 +284,56 @@
 
 @keyframes rr-moveToQueue{
     10%{
-        left: 45%;
-        top: 35%; 
+        left: 47%;
+        top: 37%; 
     }
     20%{
-        left: 45%;
-        top: 35%;
+        left: 47%;
+        top: 37%;
     }
     30%{
-        left: 45%;
-        top: 35%;
+        left: 47%;
+        top: 37%;
     }
     40%{
-        left: 45%;
-        top: 35%;
+        left: 47%;
+        top: 37%;
     }
     50%{
-        left: 45%;
-        top: 35%;
+        left: 47%;
+        top: 37%;
         background-color: #FF0000;
     }
     60%{
-        left: 45%;
-        top: 35%;
+        left: 47%;
+        top: 37%;
         background-color: #FF0000;
     }
     70%{
-        left: 45%;
-        top: 35%;
+        left: 47%;
+        top: 37%;
         background-color: #FF0000;
     }
     80%{
-        left: 45%;
-        top: 35%;
+        left: 47%;
+        top: 37%;
         background-color: #FF0000;
     }
     90%{
-        left: 45%;
-        top: 35%;
+        left: 47%;
+        top: 37%;
         background-color: #0E6800;
         opacity: 1;
     }
     95%{
-        left: 45%;
-        top: 35%;
+        left: 95%;
+        top: 80%;
         background-color: #0E6800;
         opacity: 1;
     }
     100%{
-        left: 45%;
-        top: 35%;
+        left: 95%;
+        top: 80%;
         background-color: #0E6800;
         opacity: 0;
     }
