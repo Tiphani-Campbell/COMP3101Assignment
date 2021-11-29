@@ -6,7 +6,7 @@
                 <div id="rr-space"></div>
              </div>
            <div id="rr-queue">Queue</div>
-           <img id="rr-rejoinarrow" src="RejoinArrow@2x.png" alt="rejoin arrow">
+           <img id="rr-rejoinarrow" src="RejoinArrow.png" alt="rejoin arrow">
            <div id="rr-legend">Key
                <div class= "rr-legend-item"><div id="rr-ready"></div>Ready</div>
                <div class= "rr-legend-item"><div id="rr-running"></div>Running</div>
@@ -46,15 +46,14 @@
 
     rrForm.innerHTML = html;
     
-    foot = "<div class=\"form-group\">" +
+    foot = "<div class=\"form-group\" id=\"speed2\">" +
                     "<label for=\"animationSpeedRR\">Animation Speed</label>" +
                     "<select class=\"form-control\" id=\"animationSpeedRR\">" +
                         "<option>Slow</option>" +
                         "<option>Fast</option>" +
                     "</select>" +
                   "</div>";
-    btn = "<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>" +
-                               "<button id=\"rrProcessesInfoBtn\" type=\"button\" class=\"btn btn-primary\">Submit</button>";
+    btn = "<button id=\"rrProcessesInfoBtn\" type=\"button\" class=\"btn btn-primary\">Submit</button>";
     var rrFooter = document.getElementById("rrFooter");
     rrFooter.innerHTML = foot + btn;
 
@@ -76,7 +75,6 @@
             rrForm.innerHTML = "<div class=\"form-group\">" +
                                         "<label for=\"pAmount\">Process Amount</label>" +
                                         "<input class=\"form-control\" id=\"rrPAmount\" aria-describedby=\"pAmountHelp\" placeholder=\"Enter the process amount\">" +
-                                        +
                                      "</div>"
             rrForm2.innerHTML="<div class=\"form-group\">" +
                                      "<label for=\"Quantum\">Quantum</label>" +
@@ -84,8 +82,7 @@
                                      "</div>";
 
             var rrFooter = document.getElementById("rrFooter");
-            rrFooter.innerHTML = "<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>" +
-                                       "<button id=\"rrSubmitBtn\" type=\"button\" class=\"btn btn-primary\">Submit</button>";
+            rrFooter.innerHTML = "<button id=\"rrSubmitBtn\" type=\"button\" class=\"btn btn-primary\">Submit</button>";
 
             $("main").load("roundrobin.html");
         };
@@ -126,7 +123,7 @@ function getParameters(processMap, numberOfProcesses, duration, delay) {
     var processEntries = Object.entries(processMap);
 
     /**********************CREATES DETAILS TABLE*****************************/
-    var detailsBody = document.getElementById("detailsContent");
+    var detailsBody = document.getElementById("detailsBody");
     var html = "<table id=\"detailsTable\" class=\"table table-striped table-light table-hover\">" +
                 "<thead>" +
                     "<tr>" +

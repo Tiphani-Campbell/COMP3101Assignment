@@ -216,7 +216,7 @@
     text-align: center;
 }
 .process-roundrobin{
-    position: relative;
+    position: absolute;
     border: 0;
     color: white;
     border-radius: 100%;
@@ -302,39 +302,39 @@
     50%{
         left: 47%;
         top: 37%;
-        background-color: #FF0000;
+        background-color: blue;
     }
     60%{
         left: 47%;
         top: 37%;
-        background-color: #FF0000;
+        background-color: blue;
     }
     70%{
         left: 47%;
         top: 37%;
-        background-color: #FF0000;
+        background-color: blue;
     }
     80%{
         left: 47%;
         top: 37%;
-        background-color: #FF0000;
+        background-color: blue;
     }
     90%{
         left: 47%;
         top: 37%;
-        background-color: #0E6800;
+        background-color: red;
         opacity: 1;
     }
     95%{
         left: 95%;
         top: 80%;
-        background-color: #0E6800;
+        background-color: red;
         opacity: 1;
     }
     100%{
         left: 95%;
         top: 80%;
-        background-color: #0E6800;
+        background-color: red;
         opacity: 0;
     }
 }
