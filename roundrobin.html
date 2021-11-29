@@ -209,16 +209,19 @@ function animateProcesses(processEntries, delay, duration) {
     processEntries.forEach(function (item) {
 
         var hiddenProcesses = document.getElementsByClassName(item[0] +"-hidden");
+        
 
         //process number
         num = i + 1;
 
         //getting the processes and adding animation
         var process = document.getElementById(item[0]);
-        var time = document.getElementById(item[1]);
-        if(hiddenProcesses.length == 0 && time === 0) {
-            process.style.animation = "rr-movetoProcessor" + duration + "s linear forwards";
-        } else {
+        var time = document.getElementById("burstTime");
+        proctime = time.innerHTML;
+        proctime=proctime[0];
+        if(hiddenProcesses.length == 0 && proctime <= quantum) {
+            process.style.animation = "rr-movetoProcessor " + duration + "s linear forwards";
+        } else if(hiddenProcesses.length > 0){
             process.style.animation = "rr-moveToQueue " + duration + "s linear forwards";
         }
         
@@ -239,9 +242,6 @@ function animateProcesses(processEntries, delay, duration) {
     i = 0;
     processEntries.forEach(function(item) {
 
-        //process number
-        num = i + 1;
-
         if (i==0) {
             nextDelay = delay;
         } else {
@@ -255,14 +255,14 @@ function animateProcesses(processEntries, delay, duration) {
 
             if(j==hiddenProcesses.length-1) {
                 hiddenDelay = nextDelay + (totalDelay * (j+1));
-                appearDelay = totalDelay * (j+1) + i;
-                hiddenProcesses[j].style.animation = "arrive 0.5s linear " + appearDelay + "s forwards, rr-movetoProcessor " + duration + "s linear " + hiddenDelay + "s forwards";
+                appearDelay = totalDelay * (j+1) + i+1;
+                hiddenProcesses[j].style.animation = "arrive 0.2s linear " + appearDelay + "s forwards, rr-movetoProcessor " + duration + "s linear " + hiddenDelay + "s forwards";
                 
                 break;
             }
 
             hiddenDelay = nextDelay + (totalDelay * (j+1));
-            appearDelay = totalDelay * (j+1) + i;
+            appearDelay = totalDelay * (j+1) + i+1;
             hiddenProcesses[j].style.animation = "arrive 0.5s linear " + appearDelay + "s forwards, rr-moveToQueue " + duration + "s linear " + hiddenDelay + "s forwards";
         }
 

@@ -326,14 +326,14 @@
         opacity: 1;
     }
     95%{
-        left: 95%;
-        top: 80%;
+        left: 15%;
+        top: 70%;
         background-color: red;
         opacity: 1;
     }
     100%{
-        left: 95%;
-        top: 80%;
+        left: 15%;
+        top: 70%;
         background-color: red;
         opacity: 0;
     }
