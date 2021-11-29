@@ -1,18 +1,253 @@
-<div class="container">
-    <h3>Shortest Job First</h3>
-    <div id="animation">
-        <div class="processor">
-            <div id="name">PROCESSOR</div>
-            <div id="space"></div>
+<link rel="stylesheet" href="shortest-job-first.css" type="text/css">
+
+
+<div id="sjf-container" class="container">
+    <h3 id="sjf-h3">Shortest Job First</h3>
+    <div id="sjf-animation">
+        <div class="sjf-processor">
+            <div id="sjf-name">PROCESSOR</div>
+            <div id="sjf-space"></div>
         </div>
-        <div id="queue">QUEUE</div>
-        <div id="legend">
-            <div class="legend-item" id="ready">Ready</div>
-            <div class="legend-item" id="running">Running</div>
-            <div class="legend-item" id="terminated">Terminated</div>
+        <div id="sjf-queue">QUEUE</div>
+        <div id="sjf-legend">
+            <div class="sjf-legend-item" id="ready">Ready</div>
+            <div class="sjf-legend-item" id="running">Running</div>
+            <div class="sjf-legend-item" id="terminated">Terminated</div>
         </div>
-        <button id="restart" type="button">Restart</button>
-        <button id="new" type="button">New</button>
-        <button id="details" type="button">Details</button>
+        <button id="sjf-restart" type="button">Restart</button>
+        <button id="sjf-new" type="button">New</button>
+        <button id="sjf-details" type="button">Details</button>
     </div>
 </div>
+
+<script>
+    $('#sjfModal').modal('show');
+
+    var sjfProcAmount = document.getElementById("sjfProcAmount");
+    sjfProcAmount.onclick = function() {
+        var numProcessesTxtBx = document.getElementById("sjfNumProcesses");
+        var numProcesses = parseInt(numProcessesTxtBx.value);
+
+        var sjfModalForm = document.getElementById("sjfModalForm");
+        var html = "<small>Enter the burst time(s) for the " + numProcesses + " process(es) below:</small>";
+        var i;
+        var num;
+        for(i = 0; i < numProcesses; i++) {
+            num = i + 1;
+
+            html = html + "<div class=\"form-group\">" + 
+                            "<input class=\"form-control sjfProcesses\" id=\"sjfP" + num + "\" aria-describedby=\"numProcessesHelp\" placeholder=\"Enter burst time for P" + num + " (in ms)\">" +
+                           "</div>";
+        }
+
+        html = html + "<div class=\"form-group\">" +
+                        "<label for=\"animationSpeedSJF\">Animation Speed</label>" +
+                        "<select class=\"form-control\" id=\"animationSpeedSJF\">" +
+                            "<option>Slow</option>" +
+                            "<option>Fast</option>" +
+                        "</select>" +
+                      "</div>";
+
+        sjfModalForm.innerHTML = html;
+
+        var sjfModalFooter = document.getElementById("sjfModalFooter");
+        sjfModalFooter.innerHTML = "<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>" +
+                                   "<button id=\"sjfProcessesInfoBtn\" type=\"button\" class=\"btn btn-primary\">Submit</button>";
+    
+        
+        var sjfProcessesInfoBtn = document.getElementById("sjfProcessesInfoBtn");
+        sjfProcessesInfoBtn.onclick = function() {
+
+            /*******************SETTING ONCLICK LISTENERS*********************/
+            var restartBtn = document.getElementById("restartBtn");
+            restartBtn.onclick = function() {
+                var sjf = document.getElementById("sjf");
+                sjf.click();
+            };
+
+            var newBtn = document.getElementById("newBtn");
+            newBtn.onclick = function() {
+                var sjfModalForm = document.getElementById("sjfModalForm");
+                sjfModalForm.innerHTML = "<div class=\"form-group\">" +
+                                            "<label for=\"numProcesses\">Number of processes</label>" +
+                                            "<input class=\"form-control\" id=\"sjfNumProcesses\" aria-describedby=\"numProcessesHelp\" placeholder=\"Enter number of processes\">" +
+                                            "<small id=\"numProcessesHelp\" class=\"form-text text-muted\">Numbers between 1 - 5 work best.</small>" +
+                                         "</div>";
+
+                var sjfModalFooter = document.getElementById("sjfModalFooter");
+                sjfModalFooter.innerHTML = "<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>" +
+                                           "<button id=\"sjfProcAmount\" type=\"button\" class=\"btn btn-primary\">Submit</button>";
+
+                $("main").load("../templates/sjf.html");
+            };
+            /*******************SETTING ONCLICK LISTENERS*********************/
+
+
+            var sjfProcessesTimeTxtBxs = document.getElementsByClassName("sjfProcesses");
+            var animationSpeedSJF = document.getElementById("animationSpeedSJF");
+            var speed = animationSpeedSJF.value;
+
+            var duration;
+            var delay;
+
+            //DELAY NEEDS TO BE 1/3 OF THE DURATION FOR ANIMATIONS TO BE IN SYNC
+            if(speed.localeCompare("Slow") == 0) {
+                duration = 9;
+                delay = 3;
+            } else {
+                duration = 3;
+                delay = 1;
+            }
+
+            var processMap = new Object();
+            var num;
+            for(var i = 0; i < sjfProcessesTimeTxtBxs.length; i++) {
+                num = i + 1;
+
+                processMap["P"+num] = parseInt(sjfProcessesTimeTxtBxs[i].value);
+            }
+
+            getParameters(processMap, num, duration, delay);
+            $('#sjfModal').modal('hide');
+        };
+    
+    };
+
+    /************************PROCESSES INFORMATION RECEIVED FROM MODALS********************************/
+    function getParameters(processMap, numberOfProcesses, duration, delay) {
+
+        var processEntries = Object.entries(processMap);
+
+        processEntries.sort((a,b) => a[1]-b[1])
+
+        var detailsModalTitle = document.getElementById("detailsModalTitle");
+        detailsModalTitle.innerHTML = "Shortest Job First - Details";
+
+
+        /**********************CREATES DETAILS TABLE*****************************/
+        var detailsModalBody = document.getElementById("detailsModalBody");
+        var html = "<table id=\"detailsTables\" class=\"table table-striped table-dark table-hover\">" +
+                    "<thead>" +
+                        "<tr>" +
+                        "<th scope=\"col\">Order</th>" +
+                        "<th scope=\"col\">Process</th>" +
+                        "<th scope=\"col\">Burst Time</th>" +
+                        "<th scope=\"col\">Arrival Time</th>" +
+                        "<th scope=\"col\">Waiting Time</th>" +
+                        "</tr>" +
+                    "</thead>" +
+                    "<tbody>";
+
+        var averageWaitTime = 0;
+        var currentWaitTime = 0;
+        var order = 1;
+        processEntries.forEach(function(item) {
+
+            if(order==1) {
+                currentWaitTime = 0;
+            } else {
+                currentWaitTime = currentWaitTime + processEntries[order-2][1]
+            }
+
+            html = html + "<tr>" +
+                            "<th scope=\"row\">" + order + "</th>" +
+                            "<td>" + item[0] + "</td>" +
+                            "<td>" + item[1] + "ms</td>" +
+                            "<td>0ms</td>" +
+                            "<td>" + currentWaitTime + "ms</td>" +
+                           "</tr>";
+            
+            averageWaitTime = averageWaitTime + currentWaitTime;
+            order++;
+        });
+        averageWaitTime = averageWaitTime/processEntries.length;
+        html = html + "<tr>" +
+                        "<th scope=\"row\"></th>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td><strong>Average Wait Time</strong></td>" +
+                        "<td><strong>" + averageWaitTime.toFixed(1) + "ms</strong></td>" +
+                      "</tr>" +
+                    "</tbody>" +
+                  "</table>";
+        
+        detailsModalBody.innerHTML = html;
+
+        var detailsBtn = document.getElementById("detailsBtn");
+        detailsBtn.onclick = function(){
+            $('#detailsModal').modal('show');
+        };
+
+        loadProcesses(numberOfProcesses, processEntries, duration, delay);
+    }
+    
+    
+    /********************************LOADS THE PROCESSES INTO THE QUEUE**************************************/
+    function loadProcesses(numberOfProcesses, processEntries, duration, delay) {
+        
+        var i = 0;
+        var num;
+
+        var topVal = 10;
+        var topDif = 15;
+        var topFinal = 0;
+
+        processEntries.forEach(function (item) {
+            //adding process
+            var html = "<div id=\"" + item[0] + "\" class=\"process-sjf\"><div><b>" + item[0] + "</b></div> <div id=\"burstTime\">" + item[1] + "ms</div> </div>";
+            $("#anim").append(html);
+
+            //fetching and styling process
+            var process = document.getElementById(item[0]);
+
+            // adding top
+            topFinal = topVal + (topDif * i);
+            process.style.top = topFinal +"%";
+
+            i = i + 1;
+        });
+
+        animateProcesses(processEntries, delay, duration);
+    }
+
+    /***************************************ANIMATES THE PROCESSES LOAD AND THE PROCESSOR**************************************************/
+    function animateProcesses(processEntries, delay, duration) {
+        var i = 0;
+        var num;
+
+        var nextDelay = 0;
+        processEntries.forEach(function (item) {
+
+            //process number
+            num = i + 1;
+
+
+            //fetching current process and adding animation
+            var process = document.getElementById(item[0]);
+            process.style.animation = "moveToProcessor-sjf " + duration + "s linear forwards";
+            if (i==0) {
+                process.style.animationDelay = delay + "s";
+            } else {
+                nextDelay = delay + duration * i;
+                process.style.animationDelay = nextDelay + "s";
+            }
+
+
+            //Animating the processor
+            var html = "<div id=\"processor" + num + "\" class=\"processor-sjf\"></div>";
+            $("#anim").append(html);
+            
+            var processor = document.getElementById("processor"+num);
+
+            var processorDelay = (duration * 0.5) + (duration * i);
+            processor.style.animationDelay = processorDelay + "s";
+            
+            var count = Math.ceil(duration * 0.4);
+            processor.style.animationIterationCount = count + "";
+            processor.classList.add("animate__heartBeat");
+
+
+            i = i + 1;
+        });
+    }
+</script>    
