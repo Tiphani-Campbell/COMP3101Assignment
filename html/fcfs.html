@@ -16,32 +16,253 @@
 <body>
 
     <div class="container">
-        <h3>FIRST COME FIRST SERVE</h3>
-        <div id="animation">
-            <div class="processor" id="fcfs">
+        <div id="fcfscontainer">
+            <h3 id="fcfs-head">FIRST COME FIRST SERVE</h3>
+            <div class="processorfcfs" id="fcfs">
                 <div id="name">PROCESSOR</div>
                 <div id="space"></div>
             </div>
-            <div id="queue">QUEUE</div>
-            <div id="legend">
-                <div class="legend-item">
-                    <div id="ready"></div>
+            <div id="fcfsqueue">Queue</div>
+            <div id="fcfslegend">
+                <div id="fcfslegendKeyHead">KEY</div>
+                <div class="fcfslegend-item">
+                    <div id="fcfsready"></div>
                     Ready
                 </div>
-                <div class="legend-item">
-                    <div id="running"></div>
+                <div class="fcfslegend-item">
+                    <div id="fcfsrunning"></div>
                     Running
                 </div>
-                <div class="legend-item">
-                    <div id="terminated"></div>
+                <div class="fcfslegend-item">
+                    <div id="fcfsterminated"></div>
                     Terminated
                 </div>
             </div>
-            <button id="restart" type="button">Restart</button>
-            <button id="new" type="button">New</button>
-            <button id="details" type="button">Details</button>
+            <button id="fcfsrestart" type="button">Restart</button>
+            <button id="fcfsnew" type="button">New</button>
+            <button id="fcfsdetails" type="button">Details</button>
         </div>
     </div>
+    <main></main>
 </body>
+
+<script>
+    $('#detailsModal').modal('show');
+
+    var fcfsSubmitBtn = document.getElementById("fcfsSubmitBtn");
+    fcfsSubmitBtn.onclick = function() {
+        var numProcessesTxtBx = document.getElementById("fcfsPAmount");
+        var numProcesses = parseInt(numProcessesTxtBx.value);
+
+        var fcfsModalForm = document.getElementById("fcfsForm");
+        var html = "<small>Enter burst the time(s) for the " + numProcesses + " process(es) below:</small>";
+        var i;
+        var num;
+        for (i = 0; i < numProcesses; i++) {
+            num = i + 1;
+
+            html = html + "<div class=\"form-group\">" +
+                "<input class=\"form-control fcfsProcesses\" id=\"fcfsP" + num + "\" aria-describedby=\"numProcessesHelp\" placeholder=\"Enter burst time for P" + num + " (in ms)\">" +
+                "</div>";
+        }
+
+        html = html + "<div class=\"form-group\">" +
+            "<label for=\"animationSpeedFCFS\">Animation Speed</label>" +
+            "<select class=\"form-control\" id=\"animationSpeedFCFS\">" +
+            "<option>Slow</option>" +
+            "<option>Fast</option>" +
+            "</select>" +
+            "</div>";
+
+        fcfsModalForm.innerHTML = html;
+
+        var fcfsModalFooter = document.getElementById("fcfsFooter");
+        fcfsModalFooter.innerHTML = "<button id=\"fcfsSubmitBtn\" type=\"button\" class=\"btn btn-primary\">Submit</button>";
+
+
+        var fcfsSubmitBtn = document.getElementById("fcfsSubmitBtn");
+        fcfsSubmitBtn.onclick = function() {
+
+            /*******************SETTING ONCLICK LISTENERS*********************/
+            var fcfsrestart = document.getElementById("fcfsrestart");
+            fcfsrestart.onclick = function() {
+                var fcome = document.getElementById("fcome");
+                fcome.click();
+            };
+
+            var fcfsnew = document.getElementById("fcfsnew");
+            fcfsnew.onclick = function() {
+
+
+            };
+            /*******************SETTING ONCLICK LISTENERS*********************/
+
+
+            var fcfsProcessesTimeTxtBxs = document.getElementsByClassName("fcfsProcesses");
+            var animationSpeedFCFS = document.getElementById("animationSpeedFCFS");
+            var speed = animationSpeedFCFS.value;
+
+            var duration;
+            var delay;
+
+            if (speed.localeCompare("Slow") == 0) {
+                duration = 9;
+                delay = 3;
+            } else {
+                duration = 3;
+                delay = 1;
+            }
+
+            var processMap = new Object();
+            var num;
+            for (var i = 0; i < fcfsProcessesTimeTxtBxs.length; i++) {
+                num = i + 1;
+
+                processMap["P" + num] = parseInt(fcfsProcessesTimeTxtBxs[i].value);
+            }
+
+            getParameters(processMap, num, duration, delay);
+        };
+
+    };
+    /************************PROCESSES INFORMATION RECEIVED FROM MODALS********************************/
+    function getParameters(processMap, numberOfProcesses, duration, delay) {
+
+        var processEntries = Object.entries(processMap);
+
+        // processEntries.sort((a,b) => a[1]-b[1])
+
+        /**********************CREATES DETAILS TABLE*****************************/
+        var detailsModalBody = document.getElementById("detailsModalBody");
+        var html = "<table id=\"detailsTables\" class=\"table table-striped table-dark table-hover\">" +
+            "<thead>" +
+            "<tr>" +
+            "<th scope=\"col\">Order</th>" +
+            "<th scope=\"col\">Process</th>" +
+            "<th scope=\"col\">Burst Time</th>" +
+            "<th scope=\"col\">Arrival Time</th>" +
+            "<th scope=\"col\">Waiting Time</th>" +
+            "</tr>" +
+            "</thead>" +
+            "<tbody>";
+
+        var averageWaitTime = 0;
+        var currentWaitTime = 0;
+        var order = 1;
+        processEntries.forEach(function(item) {
+
+            var arrivalTime = order - 1;
+
+            if (order == 1) {
+                currentWaitTime = 0;
+            } else {
+                var wait = 0;
+                for (var i = 0; i < order - 1; i++) {
+                    wait = wait + processEntries[i][1];
+                }
+                currentWaitTime = wait - arrivalTime;
+            }
+
+            var arrivalTime = order - 1;
+            html = html + "<tr>" +
+                "<th scope=\"row\">" + order + "</th>" +
+                "<td>" + item[0] + "</td>" +
+                "<td>" + item[1] + "ms</td>" +
+                "<td>" + arrivalTime + "ms</td>" +
+                "<td>" + currentWaitTime + "ms</td>" +
+                "</tr>";
+
+            averageWaitTime = averageWaitTime + currentWaitTime;
+            order++;
+        });
+        averageWaitTime = averageWaitTime / processEntries.length;
+        html = html + "<tr>" +
+            "<th scope=\"row\"></th>" +
+            "<td></td>" +
+            "<td></td>" +
+            "<td><strong>Average Wait Time</strong></td>" +
+            "<td><strong>" + averageWaitTime.toFixed(1) + "ms</strong></td>" +
+            "</tr>" +
+            "</tbody>" +
+            "</table>";
+
+        detailsModalBody.innerHTML = html;
+
+        var fcfsdetails = document.getElementById("fcfsdetails");
+        fcfsdetails.onclick = function() {
+            $('#detailsModal').modal('show');
+        };
+
+        loadProcesses(numberOfProcesses, processEntries, duration, delay);
+    }
+
+    /********************************LOADS THE PROCESSES INTO THE QUEUE**************************************/
+    function loadProcesses(numberOfProcesses, processEntries, duration, delay) {
+
+        var i = 0;
+        var num;
+
+        var topVal = 10;
+        var topDif = 15;
+        var topFinal = 0;
+
+        processEntries.forEach(function(item) {
+            //adding process
+            var html = "<div id=\"" + item[0] + "\" class=\"process-sjf\"><div><b>" + item[0] + "</b></div> <div id=\"burstTime\">" + item[1] + "ms</div> </div>";
+            $("#fcfscontainer").append(html);
+
+            //fetching and styling process
+            var process = document.getElementById(item[0]);
+
+            // adding top
+            topFinal = topVal + (topDif * i);
+            process.style.top = topFinal + "%";
+
+            i = i + 1;
+        });
+
+        animateProcesses(processEntries, delay, duration);
+    }
+    /****************ANIMATES THE PROCESSES LOAD AND THE PROCESSOR****************/
+
+    function animateProcesses(processEntries, delay, duration) {
+        var i = 0;
+        var num;
+
+        var nextDelay = 0;
+        processEntries.forEach(function(item) {
+
+            //process number
+            num = i + 1;
+
+
+            //fetching current process and adding animation
+            var process = document.getElementById(item[0]);
+            process.style.animation = "moveToprocessor-fcfs " + duration + "s linear forwards";
+            if (i == 0) {
+                process.style.animationDelay = delay + "s";
+            } else {
+                nextDelay = delay + duration * i;
+                process.style.animationDelay = nextDelay + "s";
+            }
+
+
+            //Animating the processorfcfs
+            var html = "<div id=\"fcfs" + num + "\" class=\"processorfcfs\"></div>";
+            $("#fcfscontainer").append(html);
+
+            var processorfcfs = document.getElementById("fcfs" + num);
+
+            var processorfcfsDelay = (duration * 0.5) + (duration * i);
+            processorfcfs.style.animationDelay = processorfcfsDelay + "s";
+
+            var count = Math.ceil(duration * 0.4);
+            processorfcfs.style.animationIterationCount = count + "";
+            processorfcfs.classList.add("animate__heartBeat");
+
+            i = i + 1;
+        });
+    };
+</script>
 
 </html>

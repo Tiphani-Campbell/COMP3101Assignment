@@ -1,136 +1,225 @@
-h3 {
-    position: absolute;
-    left: 500px;
-    top: 8%;
-    color: black;
-    font-size: larger;
-}
-
-#fcfs {
-    top: 28%;
-    left: 63%;
-    position: absolute;
-}
-
-.processor {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-    font-size: large;
-    color: black;
-    background-color: #B9FF2E;
-    height: 200px;
-    width: 200px;
-    border-radius: 5px;
-    border-style: solid;
-    border-width: 5px;
-}
-
-.processor #name,
-.processor #space {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 190px;
-    height: 47px;
-}
-
-#restart {
-    position: absolute;
-    background-color: #3BF2FF;
-    color: black;
-    height: 45px;
-    width: 10%;
-    border-radius: 5px;
-    top: 87%;
-    left: 38%;
-}
-
-#new {
-    position: absolute;
-    background-color: #0BA634;
-    color: white;
-    height: 45px;
-    width: 10%;
-    border-radius: 5px;
-    top: 87%;
-    left: 50%;
-}
-
-#details {
-    position: absolute;
-    background-color: #440664;
-    color: white;
-    height: 45px;
-    width: 10%;
-    border-radius: 5px;
-    top: 87%;
-    left: 85%;
-}
-
-#queue {
-    position: absolute;
-    background-color: rgba(176, 235, 15, 0.767);
-    text-align: center;
-    width: 210px;
-    height: 90%;
-    top: 3.5%;
-    left: 8.5%;
-}
-
-#legend {
-    position: absolute;
-    width: 127px;
-    height: 20%;
-    top: 2%;
-    left: 85%;
-    background-color: white;
-    border-style: solid;
-    box-shadow: 2px 2px 2px;
-    border-radius: 5px;
-}
-
-#legend .legend-item {
-    display: flex;
-    align-items: center;
-}
-
-#ready,
-#running,
-#terminated {
-    height: 15px;
-    width: 15px;
-    color: black;
-    margin: 4%;
-}
-
-#ready {
-    background-color: #0E6800;
-    border-color: #0E6800;
-}
-
-#running {
-    background-color: #0031A3;
-    border-color: #0031A3;
-}
-
-#terminated {
-    background-color: #FF0000;
-    border-color: #FF0000;
-}
-
-#detailTable {
-    text-align: center;
-}
-
-#animation {
-    margin: 8% 10% 0%;
-    width: 75%;
-    background-color: white;
-    border: 8px black solid;
-    height: 400px;
-    border-radius: 3%;
-    position: relative;
-}
+    * {
+        font-family: 'Abril Fatface', cursive;
+    }
+    
+    #fcfsrestart {
+        position: absolute;
+        background-color: #3BF2FF;
+        color: black;
+        height: 45px;
+        width: 10%;
+        top: 75%;
+        left: 83%;
+    }
+    
+    #fcfsnew {
+        position: absolute;
+        background-color: #0BA634;
+        color: white;
+        height: 45px;
+        width: 10%;
+        top: 75%;
+        left: 72%;
+    }
+    
+    #fcfsdetails {
+        position: absolute;
+        background-color: #440664;
+        color: white;
+        height: 45px;
+        width: 10%;
+        top: 58%;
+        left: 77%;
+    }
+    
+    #fcfsrestart,
+    #fcfsnew,
+    #fcfsdetails {
+        border-radius: 20px;
+    }
+    
+    #fcfsqueue {
+        position: absolute;
+        filter: drop-shadow(0px 12px 16px rgb(220, 220, 220));
+        box-shadow: 3px 5px 5px #d4d4d4;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+        width: 7.5rem;
+        height: 22rem;
+        padding: 10px 5px;
+        top: 10%;
+        left: 8.5%;
+        border-radius: 3rem;
+    }
+    
+    #fcfslegend {
+        /*Font*/
+        font-family: 'Abril Fatface', cursive;
+        font-size: 1rem;
+        /*Styling*/
+        background-color: white;
+        border: 2px solid #1B0C63;
+        padding-top: 10px;
+        padding-bottom: 5px;
+        filter: drop-shadow(0px 0px 10px #1a0c63c4);
+        border-radius: 20px;
+        border: 2px solid #1B0C63;
+        /*Postition*/
+        position: absolute;
+        width: 130px;
+        height: 8rem;
+        top: 10%;
+        left: 73%;
+    }
+    
+    #fcfslegendKeyHead {
+        text-align: center;
+    }
+    
+    #fcfslegend .fcfslegend-item {
+        font-family: "Segoe UI", "Helvetica Neue", "Arial", sans-serif;
+        display: flex;
+        align-items: center;
+    }
+    
+    #fcfsready,
+    #fcfsrunning,
+    #fcfsterminated {
+        height: 15px;
+        width: 15px;
+        color: black;
+        margin: 4%;
+    }
+    
+    #fcfsready {
+        background-color: #0E6800;
+        border-color: #0E6800;
+    }
+    
+    #fcfsrunning {
+        background-color: #0031A3;
+        border-color: #0031A3;
+    }
+    
+    #fcfsterminated {
+        background-color: #FF0000;
+        border-color: #FF0000;
+    }
+    
+    #detailTable {
+        text-align: center;
+    }
+    
+    #fcfscontainer {
+        margin: 2% 0%;
+        width: 100%;
+        background-color: rgba(224, 224, 224, 0.884);
+        border: 2px black solid;
+        height: 400px;
+        position: relative;
+        box-shadow: 0px 0px 15px 5px #888888;
+    }
+    
+    #fcfs-head {
+        border-bottom: solid 1px black;
+        text-align: center;
+    }
+    
+    .process-sjf {
+        border: 2px black solid;
+        border-radius: 100%;
+        height: 65px;
+        width: 65px;
+        left: 10%;
+        background-color: green;
+    }
+    
+    .process-sjf div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .processor-sjf,
+    .process-sjf {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+    }
+    
+    .processorfcfs #name,
+    .processorfcfs #space {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 47px;
+    }
+    
+    .processorfcfs {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 28%;
+        left: 43%;
+        height: 13rem;
+        width: 15.5rem;
+        background-color: #B9FF2E;
+        border-radius: 15px;
+        border: 0.2rem solid black;
+    }
+    
+    @keyframes moveToprocessor-fcfs {
+        10% {
+            left: 52%;
+            top: 55%;
+        }
+        20% {
+            left: 52%;
+            top: 55%;
+        }
+        30% {
+            left: 52%;
+            top: 55%;
+        }
+        40% {
+            left: 52%;
+            top: 55%;
+        }
+        50% {
+            left: 52%;
+            top: 55%;
+            background-color: red;
+        }
+        60% {
+            left: 52%;
+            top: 55%;
+            background-color: red;
+        }
+        70% {
+            left: 52%;
+            top: 55%;
+            background-color: red;
+        }
+        80% {
+            left: 52%;
+            top: 55%;
+            background-color: red;
+        }
+        90% {
+            left: 62%;
+            top: 55%;
+            background-color: black;
+            opacity: 1;
+        }
+        100% {
+            left: 80%;
+            top: 55%;
+            background-color: black;
+            opacity: 0;
+        }
+    }
