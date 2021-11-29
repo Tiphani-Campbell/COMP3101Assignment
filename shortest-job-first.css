@@ -1,11 +1,11 @@
-h3{
+#sjf-h3{
     position: absolute;
     left: 789px;
     top: 288px;
     color: black;
     font-size: larger;
 }
-.processer{
+.sjf-processer{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -21,7 +21,7 @@ h3{
     border-width: 5px;
 }
 
-.processer #name, .processer #space{
+.sjf-processer #sjf-name, .processer #sjf-space{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,7 +29,7 @@ h3{
     height: 47px;
 }
 
-#restart{
+#sjf-restart{
     position: absolute;
     background-color: #3BF2FF;
     color: black;
@@ -40,7 +40,7 @@ h3{
     left: 1499px;
 }
 
-#new{
+#sjf-new{
     position: absolute;
     background-color: #0BA634;
     color: white;
@@ -51,7 +51,7 @@ h3{
     left: 1274px;
 }
 
-#details{
+#sjf-details{
     position: absolute;
     background-color: #440664;
     color: white;
@@ -62,7 +62,7 @@ h3{
     left: 1383px;
 }
 
-#queue{
+#sjf-queue{
     position: absolute;
     background-color: white;
     text-align: center;
@@ -72,7 +72,7 @@ h3{
     left: 251px;
 }
 
-#legend{
+#sjf-legend{
     position: absolute;
     width: 295px;
     height: 184px;
@@ -84,39 +84,92 @@ h3{
     border-radius: 5px;
 }
 
-#legend .legend-item{
+#sjf-legend.sjf-legend-item{
     display: flex;
     align-items: center;
 }
 
-#ready, #running, #terminated{
+#sjf-ready, #sjf-running, #sjf-terminated{
     position: absolute;
     height: 30px;
     width: 39px;
     color: black;
 }
 
-#ready{
+#sjf-ready{
     background-color: #0E6800;
     border-color: #0E6800;
     top: 462px;
     left: 1392px;
 }
 
-#running{
+#sjf-running{
     background-color: #0031A3;
     border-color: #0031A3;
     top: 510px;
     left: 1392px;
 }
 
-#terminated{
+#sjf-terminated{
     background-color: #FF0000;
     border-color: #FF0000;
     top: 558px;
     left: 1392px;
 }
 
-#detailTable{
+#sjf-detailTable{
     text-align: center;
 }
+
+
+/*@keyframes sjf-moveToProcessor{
+
+    10% {
+        left: 72%;
+        top: 55%;
+    }
+    20% {
+        left: 72%;
+        top: 55%;
+    }
+    30% {
+        left: 72%;
+        top: 55%;
+    }
+    40% {
+        left: 72%;
+        top: 55%;
+    }
+    50% {
+        left: 72%;
+        top: 55%;
+        background-color: red;
+    }
+    60% {
+        left: 72%;
+        top: 55%;
+        background-color: red;
+    }
+    70% {
+        left: 72%;
+        top: 55%;
+        background-color: red;
+    }
+    80% {
+        left: 72%;
+        top: 55%;
+        background-color: red;
+    }
+    90% {
+        left: 72%;
+        top: 55%;
+        background-color: black;
+        opacity: 1;
+    }
+    100% {
+        left: 90%;
+        top: 55%;
+        background-color: black;
+        opacity: 0;
+    }
+}*/
