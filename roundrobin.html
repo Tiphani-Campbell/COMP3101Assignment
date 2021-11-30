@@ -34,7 +34,7 @@
         var rrForm = document.getElementById("rraForm");
         var i;
         var num;
-        var html = "<small>Enter the burst time(s) for the process(es) below:</small>"
+        var html = "<h6>Enter the burst time for the process(es).</h6>"
         for(i = 0; i < numProcesses; i++) {
         num = i + 1;
 
@@ -61,7 +61,7 @@
     var rrProcessesInfoBtn = document.getElementById("rrProcessesInfoBtn");
     rrProcessesInfoBtn.onclick = function() {
 
-        /*******************ONCLICK LISTENERS*********************/
+        /*******************SETTING ONCLICK LISTENERS*********************/
         var restartBtn = document.getElementById("rr-restart");
         restartBtn.onclick = function() {
             var roundrobin = document.getElementById("roundr");
@@ -86,7 +86,7 @@
 
             $("main").load("roundrobin.html");
         };
-        /*******************MORE ONCLICK LISTENERS*********************/
+        /*******************SETTING MORE ONCLICK LISTENERS*********************/
 
 
         var rrProcessesTimeTxtBxs = document.getElementsByClassName("rrProcesses");
@@ -104,23 +104,23 @@
             delay = 1;
         }
 
-        var processMap = new Object();
+        var processInfo = new Object();
         var num;
         for(var i = 0; i < rrProcessesTimeTxtBxs.length; i++) {
              num=i+1;
-             processMap["P"+ num] = parseInt(rrProcessesTimeTxtBxs[i].value);
+             processInfo["P"+ num] = parseInt(rrProcessesTimeTxtBxs[i].value);
         }
 
-        getParameters(processMap, num, duration, delay);
+        getProcesses(processInfo, num, duration, delay);
         $('#rrmodal').modal('hide');
     };
 
 };
 
 /************************PROCESSES INFORMATION RECEIVED FROM MODALS********************************/
-function getParameters(processMap, numberOfProcesses, duration, delay) {
+function getProcesses(processInfo, numberOfProcesses, duration, delay) {
 
-    var processEntries = Object.entries(processMap);
+    var processEntries = Object.entries(processInfo);
 
     /**********************CREATES DETAILS TABLE*****************************/
     var detailsBody = document.getElementById("detailsBody");
@@ -158,12 +158,13 @@ function getParameters(processMap, numberOfProcesses, duration, delay) {
     detailsBtn.onclick = function(){
         $('#detailsmodal').modal('show');
     };
+    /**************************************************************************************************/
 
-    loadProcesses(numberOfProcesses, processEntries, duration, delay);
+    queueProcesses(numberOfProcesses, processEntries, duration, delay);
 }
 
 /********************************LOADS THE PROCESSES INTO THE QUEUE**************************************/    
-function loadProcesses(numberOfProcesses, processEntries, duration, delay) {
+function queueProcesses(numberOfProcesses, processEntries, duration, delay) {
     
     var i = 0;
     var num;
@@ -198,7 +199,7 @@ function loadProcesses(numberOfProcesses, processEntries, duration, delay) {
         animateProcesses(processEntries, delay, duration);
     }
 
-/***************************************ANIMATES THE PROCESSES LOAD AND THE PROCESSOR**************************************************/
+/***************************************ANIMATES THE PROCESSES GOING INTO THE PROCESSOR**************************************************/
 function animateProcesses(processEntries, delay, duration) {
 
     var i = 0;
@@ -214,14 +215,14 @@ function animateProcesses(processEntries, delay, duration) {
         //process number
         num = i + 1;
 
-        //getting the processes and adding animation
+        //getting the processes and animating them
         var process = document.getElementById(item[0]);
         var time = document.getElementById("burstTime");
         proctime = time.innerHTML;
         proctime=proctime[0];
         if(hiddenProcesses.length == 0 && proctime <= quantum) {
             process.style.animation = "rr-movetoProcessor " + duration + "s linear forwards";
-        } else if(hiddenProcesses.length > 0){
+        }else if(hiddenProcesses.length > 0){
             process.style.animation = "rr-moveToQueue " + duration + "s linear forwards";
         }
         
