@@ -8,3 +8,4 @@ Danielle Goulbourne -> Github[https://github.com/LuckyDara]
 Tiphani Campbell -> Github[https://github.com/Tiphani-Campbell]                    
 Raman Lewis -> Github[https://github.com/Rivaldo1123]                              
 ************************************************************************************
+Can be viewed at [https://tiphani-campbell.github.io/COMP3101Assignment/]
