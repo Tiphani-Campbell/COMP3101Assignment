@@ -1,0 +1,237 @@
+<link rel="stylesheet" href="style/shortest-job-first.css">
+
+
+<div id="sjf-container" class="container">
+    <h3 id="sjf-h3">Shortest Job First</h3>
+    <div id="sjf-animation">
+        <div class="sjf-processor">
+            <div id="sjf-name">PROCESSOR</div>
+            <div id="sjf-space"></div>
+        </div>
+        <div id="sjf-queue">QUEUE</div>
+        <div id="sjf-legend">
+            Key
+            <div class="sjf-legend-item"><div id="ready"></div>Ready</div>
+            <div class="sjf-legend-item"><div id="running"></div>Running</div>
+            <div class="sjf-legend-item"><div id="terminated"></div>Terminated</div>
+        </div>
+        <button id="sjf-restart" type="button">Restart</button>
+        <button id="sjf-new" type="button">New</button>
+        <button id="sjf-details" type="button">Details</button>
+    </div>
+</div>
+
+<script>
+    $('#sjfmodal').modal('show');
+    /*Getting Submit button or the initial modal*/
+    var sjfSubmitBtn= document.getElementById("sjfSubmitBtn");
+    sjfSubmitBtn.onclick = function() {
+        var Pamountstr = document.getElementById("sjfPAmount");
+        var Pamount = parseInt(Pamountstr.value);
+
+        var sjfForm = document.getElementById("sjfForm");
+        var heading = "<h6> Enter the burst time of the process(es).</h6>";
+        var html="";
+        var i;
+        var num;
+        for(i = 0; i < Pamount; i++) {
+            num = i + 1;
+
+            html = html + "<div class=\"form-group\">" + 
+                            "<input class=\"form-control sjfProcesses\" id=\"sjfP" + num + "\" aria-describedby=\"pAmountHelp\" placeholder=\"Enter burst time for P" + num + "\">" +
+                           "</div>";
+        }
+
+        /*Adding hmtl to the modal head and foot*/
+        sjfForm.innerHTML = heading+html;
+        var foot="<div class=\"form-group\" id=\"speed\">" +
+            "<label for=\"animationSpeedSJF\">Animation Speed</label>" +
+            "<select class=\"form-control\" id=\"animationSpeedSJF\">" +
+                "<option>Slow</option>" +
+                "<option>Fast</option>" +
+            "</select>" +
+          "</div>"
+        var sjfFooter = document.getElementById("sjfFooter");
+        sjfFooter.innerHTML = foot+
+            "<button id=\"sjfProcessesbtn\" type=\"button\" class=\"btn btn-primary\">Submit</button>";
+    
+
+        var sjfProcessesBtn = document.getElementById("sjfProcessesbtn");
+        sjfProcessesBtn.onclick = function() {
+            $('#sjfmodal').modal('hide');
+           
+            /**Setting the restart and new button on click listeners**/
+            /**Setting the restart button**/
+            var restart = document.getElementById("sjf-restart");
+            restart.onclick = function() {
+                var jobirst = document.getElementById("jobfirst");
+                jobfirst.click();
+            };
+
+            /**Setting the restart button**/
+           var newbutton= document.getElementById("sjf-new");
+            newbutton.onclick = function() {
+                var sjfForm = document.getElementById("sjfForm");
+                sjfForm.innerHTML = "<div class=\"form-group\">" +
+                                            "<label for=\"pAmount\">Process Amount</label>" +
+                                            "<input class=\"form-control\" id=\"sjfPAmount\" aria-describedby=\"pAmountHelp\" placeholder=\"Enter the process amount\">"+
+                                         "</div>";
+
+                var sjfFooter = document.getElementById("sjfFooter");
+                sjfFooter.innerHTML = "<button id=\"sjfSubmitBtn\" type=\"button\" class=\"btn btn-primary\">Submit</button>";
+
+                $("main").load("shortest-job-first.html");
+            };
+            /**Setting the restart and new button on click listeners**/
+
+            /*Creating a map for the process classes and retrieve the speed varable to determine the animation delay*/
+            var sjfProcessestxt = document.getElementsByClassName("sjfProcesses");
+            var speedButton = document.getElementById("animationSpeedSJF");
+            var speed = speedButton.value;
+
+            var duration;
+            var delay;
+
+            if(speed.localeCompare("Slow") == 0) {
+                duration = 9;
+                delay = 3;
+            } else {
+                duration = 3;
+                delay = 1;
+            }
+
+            var proMap = new Object();
+            var num;
+            for(var i = 0; i < sjfProcessestxt.length; i++) {
+                num = i + 1;
+
+                proMap["P"+num] = parseInt(sjfProcessestxt[i].value);
+            }
+
+            getParameters(proMap, num, duration, delay);
+            
+        };
+    
+    };
+    
+
+    function getParameters(proMap, pnum, duration, delay) {
+        var proEntries = Object.entries(proMap);
+
+        proEntries.sort((a,b) => a[1]-b[1])
+
+        var detailsTitle = document.getElementById("detailsTitle");
+        detailsTitle.innerHTML = "Shortest Job First Details";
+
+
+        
+        /*Creating the details table and having a onclick function pop up for the details table*/
+        var detailsBody = document.getElementById("detailsBody");
+        var html = "<table id=\"detailsTables\" class=\"table table-striped table-light table-hover\">" +
+                    "<thead>" +
+                        "<tr>" +
+                        "<th scope=\"col\">Order</th>" +
+                        "<th scope=\"col\">Process</th>" +
+                        "<th scope=\"col\">Burst Time</th>" +
+                        "<th scope=\"col\">Arrival Time</th>" +
+                        "<th scope=\"col\">Waiting Time</th>" +
+                        "</tr>" +
+                    "</thead>" +
+                    "<tbody>";
+
+        var averageWaitTime = 0;
+        var currentWaitTime = 0;
+        var order = 1;
+        proEntries.forEach(function(item) {
+
+            if(order==1) {
+                currentWaitTime = 0;
+            } else {
+                currentWaitTime = currentWaitTime + proEntries[order-2][1]
+            }
+
+            html = html + "<tr>" +
+                            "<th scope=\"row\">" + order + "</th>" +
+                            "<td>" + item[0] + "</td>" +
+                            "<td>" + item[1] + "ms</td>" +
+                            "<td>0ms</td>" +
+                            "<td>" + currentWaitTime + "ms</td>" +
+                           "</tr>";
+            
+            averageWaitTime = averageWaitTime + currentWaitTime;
+            order++;
+        });
+        averageWaitTime = averageWaitTime/proEntries.length;
+        html = html + "<tr>" +
+                        "<th scope=\"row\"></th>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td><strong>Average Wait Time</strong></td>" +
+                        "<td><strong>" + averageWaitTime.toFixed(1) + "ms</strong></td>" +
+                      "</tr>" +
+                    "</tbody>" +
+                  "</table>";
+        
+        detailsBody.innerHTML = html;
+
+        var details = document.getElementById("sjf-details");
+        details.onclick = function(){
+            $('#detailsmodal').modal('show');
+        };
+
+        createProcess(proEntries, duration, delay);
+    }
+    
+    
+    /*Creates and adds Processes into to the queue by it's sorted order*/
+    function createProcess(proEntries, duration, delay) {
+        
+        var i = 0;
+        var num;
+
+        var topVal = 20;
+        var topDif = 16;
+        var topFinal = 0;
+        /*Creates the processes*/
+        proEntries.forEach(function (item) {
+            var html = "<div id=\"" + item[0] + "\" class=\"process-sjf\"><div><b>" + item[0] + "</b></div> <div id=\"burstTime\">" + item[1] + "ms</div> </div>";
+            $("#sjf-animation").append(html);
+
+            var process = document.getElementById(item[0]);
+            /*adds them into the queue*/
+            topFinal = topVal + (topDif * i);
+            process.style.top = topFinal +"%";
+
+            i = i + 1;
+        });
+
+        processesAnimator(proEntries, delay, duration);
+    }
+
+    /********Animates the Process**********/
+    function processesAnimator(proEntries, delay, duration) {
+        var i = 0;
+        var num;
+
+        var nextDelay = 0;
+        proEntries.forEach(function (item) {
+
+            num = i + 1;
+
+            var process = document.getElementById(item[0]);
+            process.style.animation = "sjf-movetoProcessor " + duration + "s linear forwards";
+            if (i==0) {
+                process.style.animationDelay = delay + "s";
+            } else {
+                nextDelay = delay + duration * i;
+                process.style.animationDelay = nextDelay + "s";
+            }
+
+
+
+
+            i = i + 1;
+        });
+    }
+</script>
+

@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="style/priority.css">
 <div id="rtimeContainer" class="container">
-    <h3>Shortest Remaining Time</h3>
+    <h3 id="srttitle">Shortest Remaining Time</h3>
     <div id="animation">
-            <div id="mainProcessor" class="processor">
+            <div id="mainProcessor" class="srtprocessor">
                 <div id="name">PROCESSOR</div>
                 <div id="space"></div>
             </div>
@@ -17,5 +17,225 @@
             <button id="details" type="button">DETAILS</button>
             <button id="new" type="button">New</button>
             <button id="restart" type="button">Restart</button>
+            
     </div>
 </div>
+
+<script>
+    $('#srtmodal').modal('show');
+    /*Second Modal for Processes */
+    var srtSubmitBtn= document.getElementById("srtSubmitBtn");
+    srtSubmitBtn.onclick = function(){
+        /*------------------------Declaring Variables for Second Modal------------------------*/
+        var pamountstring=document.getElementById("srtPAmount");
+        var pamount = parseInt(pamountstring.value);
+        var heading="<h6> Enter the burst time of the process(es).</h6>";
+        var processModal="";
+        var foot="";
+
+        var srtform=document.getElementById("srtForm");
+        var i;
+        var num;
+
+        /*------------------------Using iteration to create a modal form for each Process------------------------*/
+       for(i = 0; i < pamount; i++) {
+            num = i + 1;
+
+            processModal= processModal + "<div class=\"form-group\">" + 
+                            "<label for=\"PB\">P"+num+"</label>"+
+                            "<input class=\"form-control srtProcesses\" id=\"srtP" + num + "\" aria-describedby=\"numProcessesHelp\" placeholder=\"Enter burst time for P" + num + " \">" +
+                           "</div>";
+        }
+        /*------------------------Creating the Footer------------------------*/      
+        foot = "<div class=\"form-group\" id=\"speed\">" +
+                        "<label for=\"animationSpeedSRT\">Animation Speed</label>" +
+                        "<select class=\"form-control\" id=\"animationSpeedSRT\">" +
+                            "<option>Slow</option>" +
+                            "<option>Fast</option>" +
+                        "</select>" +
+                      "</div>";
+
+        /*------------------------Adding defined variables into the inner html of the modal------------------------*/ 
+        srtform.innerHTML= heading +processModal;
+
+        var subbtn="<button id=\"srtProcessesInfoBtn\" type=\"button\" class=\"btn btn-primary\">Submit</button>";
+        var srtfooter=document.getElementById("srtFooter");
+        srtfooter.innerHTML=foot+subbtn;
+
+        /*------------------------After Submitting Burst Times------------------------*/
+          var srtProcessesInfoBtn = document.getElementById("srtProcessesInfoBtn");
+          srtProcessesInfoBtn.onclick = function() {
+            $('#srtmodal').modal('hide');
+           /**Setting the restart and new button on click listeners**/
+            /*******************restart butten*********************/
+            var restartBtn = document.getElementById("restart");
+            restartBtn.onclick = function() {
+                var srt = document.getElementById("rtime");
+                srt.click();
+            };
+            /*******************New Button*********************/
+            var newbtn=document.getElementById("new");
+            newbtn.onclick = function(){
+                var srtform=document.getElementById("srtForm");
+                var srtfooter=document.getElementById("srtFooter");
+
+                var modalnew="<div class=\"form-group\">"+
+                            "<label for=\"pAmount\">Process Amount</label>"+
+                            "<input class=\"form-control\" id=\"srtPAmount\" aria-describedby=\"pAmountHelp\" placeholder=\"Enter the process amount\">"+"</div>";
+                var newfoot="<button id= \"srtSubmitBtn\" type=\"button\" class=\"btn btn-primary\">SUBMIT</button>"
+
+                srtform.innerHTML=modalnew;
+                srtfooter.innerHTML=newfoot;
+
+                $("main").load("priority.html"); 
+            };
+            
+            /*Determining the animation speed*/
+            var srtProcessesStr= document.getElementsByClassName("srtProcesses");
+            var speedStr=document.getElementById("animationSpeedSRT");
+
+            var speed= speedStr.value
+            var duration;
+            var delay;
+            var promap= new Object();
+            var num;
+            var i;
+
+            if(speed.localeCompare("Slow") == 0) {
+                duration = 9;
+                delay = 3;
+            } else {
+                duration = 3;
+                delay = 1;
+            }
+
+            for(i=0;i<srtProcessesStr.length;i++){
+                num=i+1;
+                promap["P"+num]= parseInt(srtProcessesStr[i].value);
+            }
+
+            getProcessInfo(promap, num, duration, delay);
+            
+
+        };
+        
+
+    };
+
+    function getProcessInfo(promap, pnum, duration, delay){
+        var proentries= Object.entries(promap);
+        proentries.sort((a,b)=> a[1]-b[1]);
+
+        var detailsModalTitle= document.getElementById("detailsTitle")
+        var detailsModalBody= document.getElementById("detailsBody")
+
+        var detailstitle="Shortest Remaining Time Details:"
+        var detailsbody;
+        var detailsfoot;
+
+        /*Creating the details table and having a onclick function pop up for the details table*/
+        var table= "<table id=\"detailsTables\" class=\"table table-striped table-light table-hover\">" +
+                    "<thead>" +
+                        "<tr>" +
+                        "<th scope=\"col\">Order</th>" +
+                        "<th scope=\"col\">Process</th>" +
+                        "<th scope=\"col\">Burst Time</th>" +
+                        "<th scope=\"col\">Arrival Time</th>" +
+                        "<th scope=\"col\">Waiting Time</th>" +
+                        "</tr>" +
+                    "</thead>" +
+                    "<tbody>";
+        var averageWaitTime = 0;
+        var currentWaitTime = 0;
+        var order = 1;
+
+        detailsModalTitle.innerHTML= detailstitle;
+        proentries.forEach(function(item){
+            if(order==1){
+                currentWaitTime=0;
+            }else{
+                currentWaitTime=currentWaitTime+proentries[order-2][1]
+            }
+            
+            
+            table = table + "<tr>" +
+                            "<th scope=\"row\">" + order + "</th>" +
+                            "<td>" + item[0] + "</td>" +
+                            "<td>" + item[1] + "ms</td>" +
+                            "<td>0ms</td>" +
+                            "<td>" + currentWaitTime + "ms</td>" +
+                           "</tr>";
+            averageWaitTime = averageWaitTime + currentWaitTime;
+            order++;
+        });
+         averageWaitTime = averageWaitTime/proentries.length;
+         table = table + "<tr>" +
+                        "<th scope=\"row\"></th>" +
+                        "<td></td>" +
+                        "<td></td>" +
+                        "<td><strong>Average Wait Time </strong></td>" +
+                        "<td><strong>" + averageWaitTime.toFixed(1) + "ms</strong></td>" +
+                      "</tr>" +
+                    "</tbody>" +
+                  "</table>";
+
+
+        
+        detailsModalBody.innerHTML=table;
+
+         var detailsBtn = document.getElementById("details");
+        detailsBtn.onclick = function(){
+            $('#detailsmodal').modal('show');
+        };
+
+        createProcesses(proentries, duration, delay);
+    }
+
+    /*Creates and adds Processes into to the queue by it's sorted order*/    
+    function createProcesses(proentries, duration, delay){
+        var i = 0;
+        var num;
+
+        var topVal = 20;
+        var topDif = 16;
+        var topFinal = 0;
+
+        proentries.forEach(function (item) {
+            /*Creates the processes*/
+            var html = "<div id=\"" + item[0] + "\" class=\"srtprocess\"><div><b>" + item[0] + "</b></div> <div id=\"burstTime\">" + item[1] + "ms</div> </div>";
+            $("#animation").append(html);
+
+            var process = document.getElementById(item[0]);
+            /*adds them into the queue*/
+            topFinal = topVal + (topDif * i);
+            process.style.top = topFinal +"%";
+
+            i = i + 1;
+        });
+
+        animateProcesses(proentries, delay, duration);
+    }
+     /********Animates the Process**********/
+     function animateProcesses(proentries, delay, duration) {
+        var i = 0;
+        var num;
+
+        var nextDelay = 0;
+        proentries.forEach(function (item) {
+
+            num = i + 1;
+
+            var process = document.getElementById(item[0]);
+            process.style.animation = "moveToProcessor-srt " + duration + "s linear forwards";
+            if (i==0) {
+                process.style.animationDelay = delay + "s";
+            } else {
+                nextDelay = delay + duration * i;
+                process.style.animationDelay = nextDelay + "s";
+            }
+
+            i = i + 1;
+        });
+    }
+
+</script>

@@ -19,6 +19,9 @@
     <!-- Stylesheet for external containers-->
     <link rel="stylesheet" href="style/home.css">
     <link rel="stylesheet" href="style/priority.css">
+    <link rel="stylesheet" href="style/roundrobin.css">
+    <link rel="stylesheet" href="style/shortest-job-first.css">
+    <link rel="stylesheet" href="style/fcfs.css">
     <!--
     <link rel="stylesheet" href="style/priority.css">
     <link rel="stylesheet" href="style/roundrobin.css">
@@ -160,7 +163,7 @@
             <!--Modal Content-->
             
                 <div class="modal-body">
-                    <form id="sfjForm">
+                    <form id="sjfForm">
                     <div class="form-group">
                         <label for="pAmount">Process Amount</label>
                         <input class="form-control" id="sjfPAmount" aria-describedby="pAmountHelp" placeholder="Enter the process amount">
@@ -185,7 +188,7 @@
 
             <!--Modal Header with title and close button-->
                 <div class="modal-header text-center">
-                    <h3 class="modal-title w-100">Details<h3>
+                    <h3 class="modal-title w-100" id="detailsTitle">Details<h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -193,11 +196,11 @@
 
             <!--Modal Content-->
            
-                <div class="modal-body">
+                <div class="modal-body" id="detailsBody">
                 </div>
             <!--Submit Button-->
-                <div id="sjfFooter" class="modal-footer">
-                    <button id= "sjfSubmitBtn" type="button" class="btn btn-primary">SUBMIT</button>
+                <div id="detailsFooter" class="modal-footer">
+                    <button id= "closeBtn" type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
                 </div>
 
             </div>

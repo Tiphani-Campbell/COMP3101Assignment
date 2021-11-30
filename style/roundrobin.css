@@ -1,18 +1,17 @@
-
-#rtimeContainer{
+#rr-container{
     font-family: 'Segoe UI', Tahoma, 'Geneva', Verdana, sans-serif;
     text-align: center;
     background-color: rgba(224, 224, 224, 0.884);
     width: 70rem;
     height: 32rem;
+    margin: auto;
 }
-
-#rtimeContainer h3{
+#rr-h3{
     font-family: 'Abril Fatface', cursive;font-size: 1.8rem;
     border-bottom:2px solid #707070;
     margin-bottom: 0;
 }
-#queue{
+#rr-queue{
     background-color: rgb(255, 255, 255);
     width: 7.5rem;
     height:26rem;
@@ -24,14 +23,13 @@
     filter: drop-shadow(0px 12px 16px rgb(220, 220, 220));
     box-shadow: 3px 5px 5px #888888;
 }
-#legend{
+#rr-legend{
     background-color:white;
     width:13rem;
     height: 8rem;
     border-radius: 20px;
 }
-/*Key Styling*/
-#legend{
+#rr-legend{
     border: 2px solid #1B0C63;
     font-family: 'Abril Fatface', cursive;
     font-size: 1.2rem;
@@ -39,15 +37,14 @@
     filter: drop-shadow(0px 0px 10px #1a0c63c4);
     padding-bottom: 5px;
 }
-
-.legend-item{
+.rr-legend-item{
     font-family: 'Segoe UI', Tahoma, 'Geneva', Verdana, sans-serif;
     font-size: 1.0rem;
     margin-bottom: 8px;
     text-align: left;
     padding-left: 15px;
 }
-#readyc{
+#rr-ready{
     height: 1.2rem;
     width: 1.6rem;
     background-color: #0E6800;
@@ -55,7 +52,7 @@
     margin-left: 5px;
     margin-right: 5px;
 }
-#runningc{
+#rr-running{
     height: 1.2rem;
     width: 1.6rem;
     background-color: #0031A3;
@@ -63,7 +60,7 @@
     margin-left: 5px;
     margin-right: 5px;
 }
-#terminatedc{
+#rr-terminated{
     height: 1.2rem;
     width: 1.6rem;
     background-color: #FF0000;
@@ -71,22 +68,19 @@
     margin-left: 5px;
     margin-right: 5px;
 }
-
-/*buttons*/
-#details{
+#rr-details{
     border-radius: 20px;
     background-color:#440664;
     font-family: 'Abril Fatface', cursive;
     color: white;
     width:7.5rem;
-    height: 2.7rem;
+    height: 3rem;
     font-size: large;
     font-weight: 700;
     border: 0rem;
     box-shadow: 3px 3px 3px #161616;
-  }
-
-  #new{
+}
+#rr-new{
     border-radius: 20px;
     background-color:#0BA634;
     font-family: 'Abril Fatface', cursive;
@@ -97,9 +91,8 @@
     font-weight: 700;
     border: 0rem;
     box-shadow: 3px 3px 3px #161616;
-  }
-
-  #restart{
+}
+#rr-restart{
     border-radius: 20px;
     background-color:#3BF2FF;
     font-family: 'Abril Fatface', cursive;
@@ -109,204 +102,245 @@
     font-weight: 700;
     border: 0rem;
     box-shadow: 3px 3px 3px #161616;
-  }
-  
-  /*buttens hover, active*/
-  #details:hover{
-    background-color:#ad0aff;
+}
+#rr-details:hover{
+    background-color: #ad0aff;
     border: 0rem;
     box-shadow: 3px 3px 3px #161616;
-  }
-  #details:active{
-    background-color:#ad0aff;
-    outline:none;
-    border:0% !important;
-    box-shadow: 3px 3px 3px #e9b1ff;
-  }
-  #details:focus{
-    background-color:#ad0aff;
-    outline:none;
-  }
-
-  #new:hover{
-    background-color:#10ff50;
-  }
-  #new:active{
-    background-color:#10ff50;
-    outline:none;
-    border:0% !important;
+}
+#rr-details:active{
+    background-color: #ad0aff;
+    outline: none;
+    border: 0% !important;
+    box-shadow: 3px 3px 3px #e9b1ff; 
+}
+#rr-details:focus{
+    background-color: #ad0aff;
+    outline: none;
+}
+#rr-new:hover{
+    background-color: #10ff50;
+}
+#rr-new:active{
+    background-color: #10ff50;
+    outline: none;
+    border: 0% !important;
     box-shadow: 3px 3px 3px #92ffaf;
-  }
-  #new:focus{
-    background-color:#10ff50;
+}
+#rr-new:focus{
+    background-color: #10ff50;
+    outline: none;
+}
+#rr-restart:hover{
+    background-color: #7ef6ff;
+    
+}
+#rr-restart:active{
     outline:none;
-  }
-  #restart:hover{
-    background-color:#7ef6ff;
-  }
-  #restart:active{
-    background-color:#7ef6ff;
-    outline:none;
-    border:0% !important;
+    border: 0% !important;
     box-shadow: 3px 3px 3px #d9fafd;
-  }
-  #restart:focus{
-    background-color:#7ef6ff;
-    outline:none;
-  }
-  
-  #mainProcessor{
+}
+#rr-restart:focus{
+    background-color: #7ef6ff;
+    outline: none;
+}
+.rr-processor{
     width: 15.5rem;
     height: 13rem;
     background-color:#B9FF2E;
     border: 0.2rem solid black;
     border-radius: 15px;
-  }
-
-.srtprocessor #name{
+}
+.rr-processor #rr-name{
     font-family: 'Abril Fatface', cursive;
     font-size: 1.6rem;
     padding-top: 4px;
-  }
-
-.srtprocessor{
+}
+.rr-processor{
     filter: drop-shadow(0px 12px 12px rgb(161, 201, 161));
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.432);
+    z-index: 1;
 }
-
-#mainProcessor #space{
+.rr-processor #rr-space{
     margin:1rem;
     width: 13rem;
     height: 8rem;
 }
-#rejoinarrow{
+#rr-rejoinarrow{
     width: 4.5rem;
 }
-/* Positioning */
-
-#rtimeContainer #animation #mainProcessor{
+#rr-container #rr-animation .rr-processor{
     position: absolute;
     left:38.5%;
     top:18%;
 }
-
-#rtimeContainer #animation #rejoinarrow{
+#rr-container #rr-animation #rr-rejoinarrow{
     position: absolute;
     top:70%;
     left:15%;
 }
-
-#rtimeContainer #animation #legend{
+#rr-container #rr-animation #rr-legend{
     position: absolute;
     top:10%;
     left:73%;
 }
 
-#rtimeContainer #animation #details{
+#rr-container #rr-animation #rr-details{
     position: absolute;
     top:48%;
     left:77%;
 }
-#rtimeContainer #animation #new{
+#rr-container #rr-animation #rr-new{
     position: absolute;
     top:65%;
     left:72%;
 }
-#rtimeContainer #animation #restart{
+#rr-container #rr-animation #rr-restart{
     position: absolute;
     top:65%;
     left:83%;
 }
 
-
-#rtimeContainer #animation #queue{
+#rr-container #rr-animation #rr-queue{
     position: absolute;
     top:7%;
     left: 2%;
 }
 
-#rtimeContainer #animation{
+#rr-container #rr-animation{
     position: relative;
     height: 27rem;
-    margin:0px;
+    margin: 0px;
 }
-/*Processes Design*/
-
-.srtprocess {
+#rr-detailTable{
+    text-align: center;
+}
+.process-roundrobin{
     position: absolute;
-    font-size: small;
-    font-weight: 200;
-    color: white;
     border: 0;
+    color: white;
     border-radius: 100%;
     height: 60px;
     width: 60px;
     left: 4.5%;
-    background-color: green;
+    background-color: #0E6800;
+    font-weight: 200;
+    font-size: small;
     box-shadow: 3px 3px 3px #161616;
+    text-align: center;
     z-index: 2;
 }
 
-.srtprocess div {
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-
-
-/*Animation Keyframes*/
-
-@keyframes moveToProcessor-srt {
-
-    10% {
+@keyframes rr-movetoProcessor{
+    10%{
         left: 47%;
         top: 37%;
     }
-    20% {
+    20%{
+        left: 47%;
+        top: 37%; 
+    }
+    30%{
         left: 47%;
         top: 37%;
     }
-    30% {
+    40%{
         left: 47%;
         top: 37%;
     }
-    40% {
+    50%{
         left: 47%;
         top: 37%;
+        background-color:#0031A3 ;
     }
-    50% {
+    60%{
         left: 47%;
         top: 37%;
-        background-color: blue;
+        background-color: #0031A3;
     }
-    60% {
+    70%{
         left: 47%;
         top: 37%;
-        background-color: blue;
+        background-color: #0031A3;
     }
-    70% {
+    80%{
         left: 47%;
         top: 37%;
-        background-color: blue;
+        background-color: #0031A3;
     }
-    80% {
+    90%{
         left: 47%;
         top: 37%;
-        background-color: blue;
-    }
-    90% {
-        left: 47%;
-        top: 37%;
-        background-color: red;
+        background-color: #FF0000;
         opacity: 1;
     }
-    100% {
+    100%{
         left: 95%;
         top: 80%;
-        background-color: red;
+        background-color: #FF0000;
         opacity: 0;
+    }
+}
+
+@keyframes rr-moveToQueue{
+    10%{
+        left: 47%;
+        top: 37%; 
+    }
+    20%{
+        left: 47%;
+        top: 37%;
+    }
+    30%{
+        left: 47%;
+        top: 37%;
+    }
+    40%{
+        left: 47%;
+        top: 37%;
+    }
+    50%{
+        left: 47%;
+        top: 37%;
+        background-color: blue;
+    }
+    60%{
+        left: 47%;
+        top: 37%;
+        background-color: blue;
+    }
+    70%{
+        left: 47%;
+        top: 37%;
+        background-color: blue;
+    }
+    80%{
+        left: 47%;
+        top: 37%;
+        background-color: blue;
+    }
+    90%{
+        left: 47%;
+        top: 37%;
+        background-color: #0E6800;
+        opacity: 1;
+    }
+    95%{
+        left: 15%;
+        top: 70%;
+        background-color: #0E6800;
+        opacity: 1;
+    }
+    100%{
+        left: 15%;
+        top: 70%;
+        background-color: #0E6800;
+        opacity: 0;
+    }
+}
+
+@keyframes arrive{
+    100%{
+        opacity: 1;
     }
 }

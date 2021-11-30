@@ -1,0 +1,228 @@
+* {
+    font-family: 'Abril Fatface', cursive;
+}
+
+#fcfsrestart {
+    position: absolute;
+    background-color: #3BF2FF;
+    color: black;
+    height: 45px;
+    width: 10%;
+    top: 75%;
+    left: 83%;
+}
+
+#fcfsnew {
+    position: absolute;
+    background-color: #0BA634;
+    color: white;
+    height: 45px;
+    width: 10%;
+    top: 75%;
+    left: 72%;
+}
+
+#fcfsdetails {
+    position: absolute;
+    background-color: #440664;
+    color: white;
+    height: 45px;
+    width: 10%;
+    top: 58%;
+    left: 77%;
+}
+
+#fcfsrestart,
+#fcfsnew,
+#fcfsdetails {
+    border-radius: 20px;
+}
+
+#fcfsqueue {
+    position: absolute;
+    filter: drop-shadow(0px 12px 16px rgb(220, 220, 220));
+    box-shadow: 3px 5px 5px #d4d4d4;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    width: 7.5rem;
+    height: 22rem;
+    padding: 10px 5px;
+    top: 10%;
+    left: 8.5%;
+    border-radius: 3rem;
+}
+
+#fcfslegend {
+    /*Font*/
+    font-family: 'Abril Fatface', cursive;
+    font-size: 1rem;
+    /*Styling*/
+    background-color: white;
+    border: 2px solid #1B0C63;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    filter: drop-shadow(0px 0px 10px #1a0c63c4);
+    border-radius: 20px;
+    border: 2px solid #1B0C63;
+    /*Postition*/
+    position: absolute;
+    width: 130px;
+    height: 8rem;
+    top: 10%;
+    left: 73%;
+}
+
+#fcfslegendKeyHead {
+    text-align: center;
+}
+
+#fcfslegend .fcfslegend-item {
+    font-family: "Segoe UI", "Helvetica Neue", "Arial", sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+#fcfsready,
+#fcfsrunning,
+#fcfsterminated {
+    height: 15px;
+    width: 15px;
+    color: black;
+    margin: 4%;
+}
+
+#fcfsready {
+    background-color: #0E6800;
+    border-color: #0E6800;
+}
+
+#fcfsrunning {
+    background-color: #0031A3;
+    border-color: #0031A3;
+}
+
+#fcfsterminated {
+    background-color: #FF0000;
+    border-color: #FF0000;
+}
+
+#detailTable {
+    text-align: center;
+}
+
+#fcfscontainer {
+    margin: 2% 0%;
+    width: 100%;
+    background-color: rgba(224, 224, 224, 0.884);
+    border: 2px black solid;
+    height: 400px;
+    position: relative;
+    box-shadow: 0px 0px 15px 5px #888888;
+}
+
+#fcfs-head {
+    border-bottom: solid 1px black;
+    text-align: center;
+}
+
+.process-sjf {
+    border: 2px black solid;
+    border-radius: 100%;
+    height: 65px;
+    width: 65px;
+    left: 10%;
+    background-color: green;
+}
+
+.process-sjf div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.processor-sjf,
+.process-sjf {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.processorfcfs #name,
+.processorfcfs #space {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 47px;
+}
+
+.processorfcfs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: absolute;
+    top: 28%;
+    left: 43%;
+    height: 13rem;
+    width: 15.5rem;
+    background-color: #B9FF2E;
+    border-radius: 15px;
+    border: 0.2rem solid black;
+}
+
+.process-fcfs {
+    top: 25%;
+}
+
+@keyframes moveToprocessor-fcfs {
+    10% {
+        left: 52%;
+        top: 55%;
+    }
+    20% {
+        left: 52%;
+        top: 55%;
+    }
+    30% {
+        left: 52%;
+        top: 55%;
+    }
+    40% {
+        left: 52%;
+        top: 55%;
+    }
+    50% {
+        left: 52%;
+        top: 55%;
+        background-color: blue;
+    }
+    60% {
+        left: 52%;
+        top: 55%;
+        background-color: blue;
+    }
+    70% {
+        left: 52%;
+        top: 55%;
+        background-color: blue;
+    }
+    80% {
+        left: 52%;
+        top: 55%;
+        background-color: blue;
+    }
+    90% {
+        left: 62%;
+        top: 55%;
+        background-color: black;
+        opacity: 1;
+    }
+    100% {
+        left: 80%;
+        top: 55%;
+        background-color: black;
+        opacity: 0;
+    }
+}
