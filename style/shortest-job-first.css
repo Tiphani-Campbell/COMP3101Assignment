@@ -44,7 +44,7 @@
   text-align: left;
   padding-left: 15px;
 }
-#sjf-ready{
+#ready{
   height: 1.2rem;
   width: 1.6rem;
   background-color: #0E6800;
@@ -52,7 +52,7 @@
   margin-left: 5px;
   margin-right: 5px;
 }
-#sjf-running{
+#running{
   height: 1.2rem;
   width: 1.6rem;
   background-color: #0031A3;
@@ -60,7 +60,7 @@
   margin-left: 5px;
   margin-right: 5px;
 }
-#sjf-terminated{
+#terminated{
   height: 1.2rem;
   width: 1.6rem;
   background-color: #FF0000;
