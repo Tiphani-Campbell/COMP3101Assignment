@@ -216,13 +216,13 @@
     90% {
         left: 62%;
         top: 55%;
-        background-color: black;
+        background-color: red;
         opacity: 1;
     }
     100% {
         left: 80%;
         top: 55%;
-        background-color: black;
+        background-color: red;
         opacity: 0;
     }
 }
