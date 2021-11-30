@@ -322,19 +322,19 @@
     90%{
         left: 47%;
         top: 37%;
-        background-color: red;
+        background-color: #0E6800;
         opacity: 1;
     }
     95%{
         left: 15%;
         top: 70%;
-        background-color: red;
+        background-color: #0E6800;
         opacity: 1;
     }
     100%{
         left: 15%;
         top: 70%;
-        background-color: red;
+        background-color: #0E6800;
         opacity: 0;
     }
 }
