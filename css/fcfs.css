@@ -1,7 +1,3 @@
-    * {
-        font-family: 'Abril Fatface', cursive;
-    }
-    
     #fcfsrestart {
         position: absolute;
         background-color: #3BF2FF;
@@ -162,7 +158,6 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        align-items: center;
         position: absolute;
         top: 28%;
         left: 43%;
@@ -171,6 +166,10 @@
         background-color: #B9FF2E;
         border-radius: 15px;
         border: 0.2rem solid black;
+    }
+    
+    .process-fcfs {
+        top: 25%;
     }
     
     @keyframes moveToprocessor-fcfs {
@@ -193,22 +192,22 @@
         50% {
             left: 52%;
             top: 55%;
-            background-color: red;
+            background-color: blue;
         }
         60% {
             left: 52%;
             top: 55%;
-            background-color: red;
+            background-color: blue;
         }
         70% {
             left: 52%;
             top: 55%;
-            background-color: red;
+            background-color: blue;
         }
         80% {
             left: 52%;
             top: 55%;
-            background-color: red;
+            background-color: blue;
         }
         90% {
             left: 62%;
