@@ -56,7 +56,7 @@
             "<option>Slow</option>" +
             "<option>Fast</option>" +
             "</select>" +
-            "</div><button id=\"fcfsSubmit\" type=\"button\" class=\"btn btn-primary\">Submit</button>";
+            "</div> "+"<button id=\"fcfsSubmit\" type=\"button\" class=\"btn btn-primary\">Submit</button>";
 
 
         var fcfsSubmitBtn = document.getElementById("fcfsSubmit");
@@ -102,29 +102,29 @@
                 delay = 1;
             }
 
-            var processMap = new Object();
+            var processInfo = new Object();
             var num;
             for (var i = 0; i < fcfsProcessesTimeTxtBxs.length; i++) {
                 num = i + 1;
 
-                processMap["P" + num] = parseInt(fcfsProcessesTimeTxtBxs[i].value);
+                processInfo["P" + num] = parseInt(fcfsProcessesTimeTxtBxs[i].value);
             }
 
-            getModal(processMap, num, duration, delay);
+            getModal(processInfo, num, duration, delay);
         };
 
     };
     /************************MODAL INFORMATION********************************/
-    function getModal(processMap, numberOfProcesses, duration, delay) {
+    function getModal(processInfo, numberOfProcesses, duration, delay) {
 
-        var processEntries = Object.entries(processMap);
+        var processEntries = Object.entries(processInfo);
 
         /**********************CREATION OF DETAILS TABLE*****************************/
         var detailsBody = document.getElementById("detailsBody");
         var html = "<table id=\"tableDetails\" class=\"table table-striped table-light table-hover\">" +
             "<thead>" +
             "<tr>" +
-            "<th scope=\"col\">Order</th>" +
+            "<th scope=\"col\">Load Order</th>" +
             "<th scope=\"col\">Process</th>" +
             "<th scope=\"col\">Burst Time</th>" +
             "<th scope=\"col\">Arrival Time</th>" +
@@ -190,7 +190,7 @@
         var num;
 
         var topDefault = 20;
-        var topDifference = 20;
+        var topDifference = 16;
         var topFinal = 0;
 
         processEntries.forEach(function(item) {
@@ -215,13 +215,11 @@
 
     function processAnimation(processEntries, delay, duration) {
         var i = 0;
-        var num;
+       
 
         var otherDelay = 0;
         processEntries.forEach(function(item) {
 
-            //Getting the number for the process
-            num = i + 1;
 
 
             //Getting the process and adding the animation

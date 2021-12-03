@@ -1,41 +1,95 @@
-* {
-    font-family: 'Abril Fatface', cursive;
+#fcfscontainer{
+    font-family: 'Segoe UI', Tahoma, 'Geneva', Verdana, sans-serif;
 }
 
 #fcfsrestart {
     position: absolute;
     background-color: #3BF2FF;
     color: black;
-    height: 45px;
-    width: 10%;
-    top: 75%;
+    height: 2.7rem;
+    width: 6.8rem;
+    font-family: 'Abril Fatface', cursive;
+    top: 65%;
     left: 83%;
+    font-size: large;
+    font-weight: 700;
+    border: 0rem;
 }
 
 #fcfsnew {
     position: absolute;
     background-color: #0BA634;
+    font-family: 'Abril Fatface', cursive;
     color: white;
-    height: 45px;
-    width: 10%;
-    top: 75%;
+    height: 2.7rem;
+    width: 6.8rem;
+    top: 65%;
     left: 72%;
+    border: 0rem;
+    font-size: large;
+    font-weight: 700;
 }
 
 #fcfsdetails {
     position: absolute;
     background-color: #440664;
     color: white;
-    height: 45px;
-    width: 10%;
-    top: 58%;
+    height: 3rem;
+    width: 7.5rem;
+    top: 48%;
     left: 77%;
+    font-family: 'Abril Fatface', cursive;
+    font-size: large;
+    font-weight: 700;
+    border: 0rem;
 }
 
 #fcfsrestart,
 #fcfsnew,
 #fcfsdetails {
     border-radius: 20px;
+    box-shadow: 3px 3px 3px #161616;
+}
+#fcfsdetails:hover{
+    background-color: #ad0aff;
+    border: 0rem;
+    box-shadow: 3px 3px 3px #161616;
+}
+#fcfsdetails:active{
+    background-color: #ad0aff;
+    outline: none;
+    border: 0% !important;
+    box-shadow: 3px 3px 3px #e9b1ff; 
+}
+#fcfsdetails:focus{
+    background-color: #ad0aff;
+    outline: none;
+}
+#fcfsnew:hover{
+    background-color: #10ff50;
+}
+#fcfsnew:active{
+    background-color: #10ff50;
+    outline: none;
+    border: 0% !important;
+    box-shadow: 3px 3px 3px #92ffaf;
+}
+#fcfsnew:focus{
+    background-color: #10ff50;
+    outline: none;
+}
+#fcfsrestart:hover{
+    background-color: #7ef6ff;
+    
+}
+#fcfsrestart:active{
+    outline:none;
+    border: 0% !important;
+    box-shadow: 3px 3px 3px #d9fafd;
+}
+#fcfsrestart:focus{
+    background-color: #7ef6ff;
+    outline: none;
 }
 
 #fcfsqueue {
@@ -45,17 +99,19 @@
     background-color: rgb(255, 255, 255);
     text-align: center;
     width: 7.5rem;
-    height: 22rem;
+    height: 26rem;
     padding: 10px 5px;
-    top: 10%;
-    left: 8.5%;
-    border-radius: 3rem;
+    top: 7%;
+    left: 2%;
+    border-radius: 50px;
+    font-family: 'Abril Fatface', cursive;
+    font-size: 1.7rem;
 }
 
 #fcfslegend {
     /*Font*/
     font-family: 'Abril Fatface', cursive;
-    font-size: 1rem;
+    font-size: 1.2rem;
     /*Styling*/
     background-color: white;
     border: 2px solid #1B0C63;
@@ -63,10 +119,9 @@
     padding-bottom: 5px;
     filter: drop-shadow(0px 0px 10px #1a0c63c4);
     border-radius: 20px;
-    border: 2px solid #1B0C63;
     /*Postition*/
     position: absolute;
-    width: 130px;
+    width: 13rem;
     height: 8rem;
     top: 10%;
     left: 73%;
@@ -80,30 +135,31 @@
     font-family: "Segoe UI", "Helvetica Neue", "Arial", sans-serif;
     display: flex;
     align-items: center;
+    font-size: 1.0rem;
+    margin-bottom: 8px;
+    text-align: left;
+    padding-left: 15px;
 }
 
 #fcfsready,
 #fcfsrunning,
 #fcfsterminated {
-    height: 15px;
-    width: 15px;
-    color: black;
-    margin: 4%;
+    height: 1.2rem;
+    width: 1.6rem;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 #fcfsready {
     background-color: #0E6800;
-    border-color: #0E6800;
 }
 
 #fcfsrunning {
     background-color: #0031A3;
-    border-color: #0031A3;
 }
 
 #fcfsterminated {
     background-color: #FF0000;
-    border-color: #FF0000;
 }
 
 #detailTable {
@@ -112,10 +168,10 @@
 
 #fcfscontainer {
     margin: 2% 0%;
-    width: 100%;
+    width: 70rem;
     background-color: rgba(224, 224, 224, 0.884);
     border: 2px black solid;
-    height: 400px;
+    height: 32rem;
     position: relative;
     box-shadow: 0px 0px 15px 5px #888888;
 }
@@ -126,12 +182,17 @@
 }
 
 .process-sjf {
-    border: 2px black solid;
+    position: absolute;
+    border: 0;
     border-radius: 100%;
-    height: 65px;
-    width: 65px;
-    left: 10%;
+    height: 60px;
+    width: 60px;
+    left: 4.5%;
     background-color: green;
+    box-shadow: 3px 3px 3px #161616;
+    color: white;
+    font-size: small;
+    font-weight: 200;
 }
 
 .process-sjf div {
@@ -147,15 +208,17 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    position: absolute;
 }
 
-.processorfcfs #name,
-.processorfcfs #space {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 47px;
+.processorfcfs #name{
+    font-family: 'Abril Fatface', cursive;
+    font-size: 1.6rem;
+    padding-top: 4px;
+}
+.processorfcfs #space{
+    margin:1rem;
+    width: 13rem;
+    height: 8rem;
 }
 
 .processorfcfs {
@@ -163,8 +226,8 @@
     flex-wrap: wrap;
     justify-content: center;
     position: absolute;
-    top: 28%;
-    left: 43%;
+    top: 18%;
+    left: 38.5%;
     height: 13rem;
     width: 15.5rem;
     background-color: #B9FF2E;
@@ -172,56 +235,53 @@
     border: 0.2rem solid black;
 }
 
-.process-fcfs {
-    top: 25%;
-}
 
 @keyframes moveToprocessor-fcfs {
     10% {
-        left: 52%;
-        top: 55%;
+        left: 47%;
+        top: 37%;
     }
     20% {
-        left: 52%;
-        top: 55%;
+        left: 47%;
+        top: 37%;
     }
     30% {
-        left: 52%;
-        top: 55%;
+        left: 47%;
+        top: 37%;
     }
     40% {
-        left: 52%;
-        top: 55%;
+        left: 47%;
+        top: 37%;
     }
     50% {
-        left: 52%;
-        top: 55%;
+        left: 47%;
+        top: 37%;
         background-color: blue;
     }
     60% {
-        left: 52%;
-        top: 55%;
+        left: 47%;
+        top: 37%;
         background-color: blue;
     }
     70% {
-        left: 52%;
-        top: 55%;
+        left: 47%;
+        top: 37%;
         background-color: blue;
     }
     80% {
-        left: 52%;
-        top: 55%;
+        left: 47%;
+        top: 37%;
         background-color: blue;
     }
     90% {
-        left: 62%;
-        top: 55%;
+        left: 47%;
+        top: 37%;
         background-color: red;
         opacity: 1;
     }
     100% {
-        left: 80%;
-        top: 55%;
+        left: 95%;
+        top: 80%;
         background-color: red;
         opacity: 0;
     }
